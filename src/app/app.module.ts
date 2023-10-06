@@ -9,10 +9,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComponentsModule } from './pages/components/components.module';
 import { CoreModule } from './core/core.module';
 import { LayoutComponent } from './pages/components/layout/layout.component';
+import { MaterialModule } from './shared/material/material.module';
+import { InicialComponent } from './pages/inicial/inicial.component';
+MaterialModule
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    InicialComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -21,7 +29,8 @@ import { LayoutComponent } from './pages/components/layout/layout.component';
     SharedModule,
     HttpClientModule,
     ComponentsModule,
-    CoreModule
+    CoreModule,
+    MaterialModule
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],

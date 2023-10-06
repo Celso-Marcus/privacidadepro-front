@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './pages/components/layout/layout.component';
+import { PerfilComponent } from './pages/components/perfil/perfil.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'perfil',
+    redirectTo: '/perfil',
+    pathMatch: 'full'
+  },
+  {
     path: '',
     component: LayoutComponent,
     children: [
@@ -23,9 +29,24 @@ const routes: Routes = [
           {
             path: 'inicial',
             loadChildren: () => import('./pages/inicial/inicial.module').then(m => m.InicialModule)
-          }
+          },
         ]
-      }    
+      }
+    ]
+  },
+  {
+    path: '',
+    component: PerfilComponent ,
+    children: [
+      {
+        path: 'perfil',
+        children: [
+          {
+            path: 'inicial',
+            loadChildren: () => import('./pages/inicial/inicial.module').then(m => m.InicialModule)
+          },
+        ]
+      }
     ]
   }
 ];
