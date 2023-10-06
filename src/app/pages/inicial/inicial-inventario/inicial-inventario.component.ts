@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { FloatLabelType } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-inicial-inventario',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./inicial-inventario.component.scss']
 })
 export class InicialInventarioComponent {
-
+  floatLabelControl = 'always' as FloatLabelType;
 }
