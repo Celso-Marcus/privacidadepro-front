@@ -1,11 +1,16 @@
 <div class="d-flex justify-content-center align-items-center">
-  <mat-card class="d-flex justify-content-center align-items-center">
-    <mat-card-content class="text-center ">
-      <h1><strong>Fase de Mapeamento</strong></h1>
-     <button class="button-32">Quiz LGPD</button>
-     <button class="button-32">DPO</button>
-     <button class="button-32">Setor</button>
-     <button class="button-32">Inventário</button>
-    </mat-card-content>
-  </mat-card>
+  <ng-container *ngIf="this.router.routerState.snapshot.url === '/fase/inicial'; else elseTemplate">
+    <mat-card class="d-flex justify-content-center align-items-center" >
+      <mat-card-content class="text-center ">
+        <h1><strong>Fase de Mapeamento</strong></h1>
+       <button class="button-32" [routerLink]="['quiz-lgpd']">Quiz LGPD</button>
+       <button class="button-32" [routerLink]="['dpo']">DPO</button>
+       <button class="button-32" [routerLink]="['setor']">Setor</button>
+       <button class="button-32" [routerLink]="['inventario']">Inventário</button>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <router-outlet></router-outlet>
+  </ng-template>
 </div>
