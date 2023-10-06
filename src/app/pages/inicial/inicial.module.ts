@@ -14,7 +14,7 @@ import { InicialRouteRoutingModule } from './inicial-route-routing.module';
     SharedModule,
     CoreModule,
     ComponentsModule,
-    InicialRouteRoutingModule
+    InicialRouteRoutingModule,
   ]
 })
 export class InicialModule { }
