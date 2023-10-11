@@ -4,22 +4,80 @@
       <mat-card-title>Inventário de Dados</mat-card-title>
     </mat-card-header>
     <mat-card-content class="text-center">
-      <mat-form-field [floatLabel]="this.floatLabelControl">
-        <mat-label>Identificação</mat-label>
-        <input matInput>
-      </mat-form-field>
-      <mat-form-field [floatLabel]="this.floatLabelControl">
-        <mat-label>Identificação</mat-label>
-        <input matInput>
-      </mat-form-field>
-      <mat-form-field [floatLabel]="this.floatLabelControl">
-        <mat-label>Identificação</mat-label>
-        <input matInput>
-      </mat-form-field>
-      <mat-form-field [floatLabel]="this.floatLabelControl">
-        <mat-label>Identificação</mat-label>
-        <input matInput>
-      </mat-form-field>
+      <form [formGroup]="form">
+
+        <mat-form-field [floatLabel]="this.floatLabelControl">
+          <mat-label>Identificação</mat-label>
+          <input matInput formControlName="tagName" required>
+        </mat-form-field>
+
+        <mat-form-field [floatLabel]="this.floatLabelControl">
+          <mat-label>Dados Coletados</mat-label>
+          <input matInput formControlName="colletedData" required>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" [floatLabel]="this.floatLabelControl">
+          <mat-label>Categoria</mat-label>
+          <mat-select formControlName="sector" required>
+            <mat-option *ngFor="let sector of sectorOptions" [value]="sector.id">
+              {{sector.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field [floatLabel]="this.floatLabelControl">
+          <mat-label>Fonte dos dados</mat-label>
+          <input matInput formControlName="sourceData" required>
+        </mat-form-field>
+
+        <mat-form-field [floatLabel]="this.floatLabelControl">
+          <mat-label>Razão dos dados</mat-label>
+          <input matInput formControlName="reasonData" required>
+        </mat-form-field>
+
+        <mat-form-field [floatLabel]="this.floatLabelControl">
+          <mat-label>Como foram armazenados?</mat-label>
+          <input matInput formControlName="howStorage" required>
+        </mat-form-field>
+
+        <mat-form-field [floatLabel]="this.floatLabelControl">
+          <mat-label>Segurança dos dados</mat-label>
+          <input matInput formControlName="securityData" required>
+        </mat-form-field>
+
+        <mat-form-field [floatLabel]="this.floatLabelControl">
+          <mat-label>Eliminação dos dados</mat-label>
+          <input matInput formControlName="deadlineData" required>
+        </mat-form-field>
+
+        <mat-form-field [floatLabel]="this.floatLabelControl">
+          <mat-label>Justificativa Legal dos Dados</mat-label>
+          <input matInput formControlName="justificationData" required>
+        </mat-form-field>
+
+        <mat-form-field [floatLabel]="this.floatLabelControl">
+          <mat-label>Dados de menores de idade?</mat-label>
+          <mat-select formControlName="underAgeData" required>
+            <mat-option [value]="true">
+              Sim
+            </mat-option>
+            <mat-option [value]="false">
+              Não
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field [floatLabel]="this.floatLabelControl">
+          <mat-label>Dados Sensíveis</mat-label>
+          <input matInput formControlName="sensitiveData" required>
+        </mat-form-field>
+
+        <mat-form-field [floatLabel]="this.floatLabelControl">
+          <mat-label>Responsável pelos dados</mat-label>
+          <input matInput formControlName="controller" required>
+        </mat-form-field>
+        
+      </form>
     </mat-card-content>
   </mat-card>
 </div>
