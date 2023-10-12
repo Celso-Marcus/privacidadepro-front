@@ -33,7 +33,6 @@ mat-card{
   background-color: #FFFF;
   width: 30%;
   height: 60%;
-  top: 10rem;
   border-radius: 8%;
 }
 mat-card-content {
@@ -47,13 +46,12 @@ mat-card-content {
 }
 
 
-:host {
+.inicio {
   display: block;
   height: 100vh;
   width: 100vw;
 }
-
-:host {
+.inicio {
   background: linear-gradient(-45deg, #c0c0c0, #2c2c2c, #d3d3d3, #ffffff);
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
