@@ -1,2 +1,16 @@
-<p>inicial-setor works!</p>
-<p>inicial-setor works!</p><p>inicial-setor works!</p><p>inicial-setor works!</p><p>inicial-setor works!</p>
+<div class="inicio-setor d-flex justify-content-center align-items-center">
+  <mat-card class="d-flex justify-content-center align-items-center">
+    <mat-card-content class="text-center">
+      <mat-card-header>
+        <mat-card-title><strong>Criar Novo Setor</strong></mat-card-title>
+      </mat-card-header>
+      <form [formGroup]="form">
+
+        <mat-form-field [floatLabel]="this.floatLabelControl">
+          <mat-label>Setor</mat-label>
+          <input matInput formControlName="tagName" required>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
