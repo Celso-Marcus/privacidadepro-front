@@ -1,10 +1,10 @@
 <div class="inicio-inventario d-flex justify-content-center align-items-center">
   <mat-card class="d-flex justify-content-center align-items-center">
+    <mat-card-header>
+      <mat-card-title>Inventário de Dados</mat-card-title>
+    </mat-card-header>
     <mat-card-content class="text-center gap-1">
-      <mat-card-header>
-        <mat-card-title><strong>Inventário de Dados</strong></mat-card-title>
-      </mat-card-header>
-      <form [formGroup]="form">
+      <form class="form" [formGroup]="form">
 
         <mat-form-field [floatLabel]="this.floatLabelControl">
           <mat-label>Identificação</mat-label>
@@ -25,7 +25,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field [floatLabel]="this.floatLabelControl">
+        <!-- <mat-form-field [floatLabel]="this.floatLabelControl">
           <mat-label>Fonte dos dados</mat-label>
           <input matInput formControlName="sourceData" required>
         </mat-form-field>
@@ -75,8 +75,9 @@
         <mat-form-field [floatLabel]="this.floatLabelControl">
           <mat-label>Responsável pelos dados</mat-label>
           <input matInput formControlName="controller" required>
-        </mat-form-field>
+        </mat-form-field> -->
 
+        <button  mat-raised-button color="primary">Salvar</button>
       </form>
     </mat-card-content>
   </mat-card>

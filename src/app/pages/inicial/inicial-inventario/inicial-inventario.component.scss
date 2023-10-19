@@ -1,20 +1,25 @@
 mat-card{
   background-color: #FFFF;
-  width: 30vw;
-  top: 16rem;
+  width: 50vw;
+  height: 70%;
+  top: 5rem;
+  bottom: 2rem;
   border-radius: 2%;
 }
 mat-card-content {
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+}
+
+mat-form-field{
+  width: 25vw;
+}
+
+.form{
   flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-}
-
-mat-form-field{
-  width: 15vw;
   gap: 1rem;
 }
 
