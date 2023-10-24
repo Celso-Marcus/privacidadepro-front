@@ -1,14 +1,17 @@
+:host{
+  overflow-x: hidden;
+}
+
 mat-card{
   background-color: #FFFF;
   width: 50vw;
-  height: 70%;
-  top: 5rem;
-  bottom: 2rem;
+  height: 42%;
   border-radius: 2%;
+  top: 1rem;
 }
 mat-card-content {
-  margin-bottom: 5rem;
-  margin-top: 5rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 mat-form-field{

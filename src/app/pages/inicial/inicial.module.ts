@@ -8,6 +8,7 @@ import { InicialQuizLpgdComponent } from './inicial-quiz-lpgd/inicial-quiz-lpgd.
 import { InicialDpoComponent } from './inicial-dpo/inicial-dpo.component';
 import { InicialSetorComponent } from './inicial-setor/inicial-setor.component';
 import { InicialInventarioComponent } from './inicial-inventario/inicial-inventario.component';
+import { InventarioCriarEditarComponent } from './inicial-inventario/inventario-criar-editar/inventario-criar-editar.component';
 
 
 
@@ -16,7 +17,8 @@ import { InicialInventarioComponent } from './inicial-inventario/inicial-inventa
     InicialQuizLpgdComponent,
     InicialDpoComponent,
     InicialSetorComponent,
-    InicialInventarioComponent
+    InicialInventarioComponent,
+    InventarioCriarEditarComponent,
   ],
   imports: [
     CommonModule,

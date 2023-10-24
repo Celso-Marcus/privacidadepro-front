@@ -2,83 +2,75 @@
   <mat-card class="d-flex justify-content-center align-items-center">
     <mat-card-header>
       <mat-card-title>Inventário de Dados</mat-card-title>
+      <button style=" top: -2px; left: 13px;" mat-mini-fab color="primary" (click)="create()">
+        <mat-icon>add</mat-icon>
+      </button>
     </mat-card-header>
     <mat-card-content class="text-center gap-1">
-      <form class="form" [formGroup]="form">
+      <ng-container *ngIf="inventoryCreation; else elseTemplate">
+        <app-inventario-criar-editar></app-inventario-criar-editar>
+      </ng-container>
+      <ng-template #elseTemplate>
 
-        <mat-form-field [floatLabel]="this.floatLabelControl">
-          <mat-label>Identificação</mat-label>
-          <input matInput formControlName="tagName" required>
-        </mat-form-field>
+        <div class="mat-elevation-z8" matSort>
+          <table mat-table [dataSource]="inventoryData">
 
-        <mat-form-field [floatLabel]="this.floatLabelControl">
-          <mat-label>Dados Coletados</mat-label>
-          <input matInput formControlName="colletedData" required>
-        </mat-form-field>
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
 
-        <mat-form-field class="full-width" [floatLabel]="this.floatLabelControl">
-          <mat-label>Categoria</mat-label>
-          <mat-select formControlName="sector" required>
-            <mat-option *ngFor="let sector of sectorOptions" [value]="sector.id">
-              {{sector.name}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+            <!-- Tag Name Column -->
+            <ng-container matColumnDef="tagName">
+              <th mat-header-cell *matHeaderCellDef> Tag </th>
+              <td mat-cell *matCellDef="let element"> {{element.tagName}} </td>
+            </ng-container>
 
-        <!-- <mat-form-field [floatLabel]="this.floatLabelControl">
-          <mat-label>Fonte dos dados</mat-label>
-          <input matInput formControlName="sourceData" required>
-        </mat-form-field>
+            <!-- Sector Column -->
+            <ng-container matColumnDef="sector">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Setor"> Setor </th>
+              <td mat-cell *matCellDef="let element"> {{element.sector}} </td>
+            </ng-container>
 
-        <mat-form-field [floatLabel]="this.floatLabelControl">
-          <mat-label>Razão dos dados</mat-label>
-          <input matInput formControlName="reasonData" required>
-        </mat-form-field>
+            <!-- Created Column -->
+            <ng-container matColumnDef="createdAt">
+              <th mat-header-cell *matHeaderCellDef>
+                Criado em
+              </th>
+              <td mat-cell *matCellDef="let element">{{element.createdAt | date}}</td>
+            </ng-container>
 
-        <mat-form-field [floatLabel]="this.floatLabelControl">
-          <mat-label>Como foram armazenados?</mat-label>
-          <input matInput formControlName="howStorage" required>
-        </mat-form-field>
+            <ng-container matColumnDef="edit">
+              <th mat-header-cell *matHeaderCellDef> Editar </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="primary" (click)="edit(element)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td>
+            </ng-container>
 
-        <mat-form-field [floatLabel]="this.floatLabelControl">
-          <mat-label>Segurança dos dados</mat-label>
-          <input matInput formControlName="securityData" required>
-        </mat-form-field>
+            <ng-container matColumnDef="delete">
+              <th mat-header-cell *matHeaderCellDef> Apagar </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="warn" (click)="delete(element)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
 
-        <mat-form-field [floatLabel]="this.floatLabelControl">
-          <mat-label>Eliminação dos dados</mat-label>
-          <input matInput formControlName="deadlineData" required>
-        </mat-form-field>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
 
-        <mat-form-field [floatLabel]="this.floatLabelControl">
-          <mat-label>Justificativa Legal dos Dados</mat-label>
-          <input matInput formControlName="justificationData" required>
-        </mat-form-field>
+          <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+          </mat-paginator>
+        </div>
 
-        <mat-form-field [floatLabel]="this.floatLabelControl">
-          <mat-label>Dados de menores de idade?</mat-label>
-          <mat-select formControlName="underAgeData" required>
-            <mat-option [value]="true">
-              Sim
-            </mat-option>
-            <mat-option [value]="false">
-              Não
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
 
-        <mat-form-field [floatLabel]="this.floatLabelControl">
-          <mat-label>Dados Sensíveis</mat-label>
-          <input matInput formControlName="sensitiveData" required>
-        </mat-form-field>
+      </ng-template>
 
-        <mat-form-field [floatLabel]="this.floatLabelControl">
-          <mat-label>Responsável pelos dados</mat-label>
-          <input matInput formControlName="controller" required>
-        </mat-form-field> -->
-
-        <button  mat-raised-button color="primary">Salvar</button>
-      </form>
     </mat-card-content>
   </mat-card>
 </div>

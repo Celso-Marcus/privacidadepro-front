@@ -6,7 +6,7 @@ export interface Quiz {
     createdAt: Date;
 }
 
-export interface createQuiz {
+export interface CreateQuiz {
     result: string;
     answers: string;
     userId: string;

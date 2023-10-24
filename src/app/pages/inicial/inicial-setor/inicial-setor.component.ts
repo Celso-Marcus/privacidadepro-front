@@ -4,7 +4,7 @@ import { FloatLabelType } from '@angular/material/form-field';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Sector } from 'src/app/core/interfaces/sector.interface';
-import { SectorService } from 'src/app/core/services/sector.service';
+import { SectorService } from 'src/app/core/services/http/sector.service';
 @Component({
   selector: 'app-inicial-setor',
   templateUrl: './inicial-setor.component.html',

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_URL } from 'src/env/env-local';
-import { Sector } from '../interfaces/sector.interface';
+import { Sector } from '../../interfaces/sector.interface';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_URL } from 'src/env/env-local';
-import { Quiz } from '../interfaces/quiz.interface';
+import { Quiz } from '../../interfaces/quiz.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class QuizService {
   ) { }
 
   //: Promise<Quiz[]>
-  getAll(userId: string){
+  getAll(){
     return [
       {
         id: '1',

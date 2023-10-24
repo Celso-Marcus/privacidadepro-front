@@ -12,6 +12,10 @@ import { LayoutComponent } from './pages/components/layout/layout.component';
 import { MaterialModule } from './shared/material/material.module';
 import { InicialComponent } from './pages/inicial/inicial.component';
 
+import { registerLocaleData } from '@angular/common';
+import localePT from '@angular/common/locales/pt';
+
+registerLocaleData(localePT);
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +33,7 @@ import { InicialComponent } from './pages/inicial/inicial.component';
     MaterialModule
   ],
   bootstrap: [AppComponent],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-br' }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class AppModule { }
