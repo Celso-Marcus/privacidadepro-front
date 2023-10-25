@@ -46,6 +46,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 // import { MatTreeModule } from '@angular/material/tree';
 // import { OverlayModule } from '@angular/cdk/overlay';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {TextFieldModule} from '@angular/cdk/text-field';
+
 
 const MaterialModules = [
   // A11yModule,
@@ -59,6 +61,7 @@ const MaterialModules = [
   // MatBadgeModule,
   // MatBottomSheetModule,
   MatButtonModule,
+  TextFieldModule,
   // MatButtonToggleModule,
   MatCardModule,
   // MatCheckboxModule,

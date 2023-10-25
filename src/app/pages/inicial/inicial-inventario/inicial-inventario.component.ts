@@ -1,5 +1,6 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Sort } from '@angular/material/sort';
@@ -7,6 +8,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Inventory } from 'src/app/core/interfaces/inventory.interface';
 import { InventoryService } from 'src/app/core/services/http/inventory.service';
+import { ErrorDialogComponent } from '../../components/dialogs/error-dialog/error-dialog.component';
+import { ConfirmDialogComponent } from '../../components/dialogs/confirm-dialog/confirm-dialog.component';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-inicial-inventario',
@@ -17,18 +21,20 @@ export class InicialInventarioComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'tagName', 'sector', 'createdAt', 'edit', 'delete'];
 
+  inventory: Inventory | undefined;
+  inventoryForm = false;
   inventoryCreation = false;
 
   inventoryData!: MatTableDataSource<Inventory>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-
   constructor(
     private readonly router: Router,
     private _snackbar: MatSnackBar,
     private _liveAnnouncer: LiveAnnouncer,
-    private readonly inventoryService: InventoryService
+    private readonly inventoryService: InventoryService,
+    public dialog: MatDialog
   ) {
   }
 
@@ -38,7 +44,6 @@ export class InicialInventarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.inventoryData = new MatTableDataSource<Inventory>(this.inventoryService.getAll());
-    // console.log(this.inventoryData);
   }
 
   // private generateRandomString() {
@@ -67,16 +72,38 @@ export class InicialInventarioComponent implements OnInit {
   //   }
   // }
 
-  create(){
+  viewList() {
+    this.inventoryForm = false;
+    this.inventoryCreation = false;
+  }
 
+  create() {
+    this.inventoryForm = true;
+    this.inventoryCreation = true;
   }
 
   edit(inventory: Inventory) {
-    console.log(inventory)
+    this.inventoryForm = true;
+    this.inventoryCreation = false;
+    this.inventory = inventory;
   }
 
-  delete(inventory: Inventory) {
-    console.log(inventory)
+  async delete(inventory: Inventory) {
+    try {
+      const result = await firstValueFrom(this.dialog.open(ConfirmDialogComponent, { data: "Você quer deletar esse item?" }).afterClosed());
+      if(result){
+        await this.inventoryService.delete(inventory.id);
+      }
+    } catch (error) {
+      console.error(error);
+      this.onError("Não foi possível deletar o item");
+    }
+  }
+
+  onError(errorMessage: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMessage
+    })
   }
 
 }

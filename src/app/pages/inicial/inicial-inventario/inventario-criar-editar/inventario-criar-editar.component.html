@@ -4,19 +4,32 @@
   <ng-container *ngIf="step == 1">
     <mat-form-field [floatLabel]="this.floatLabelControl">
       <mat-label>Identificação</mat-label>
-      <input matInput formControlName="tagName" required>
+      <input matInput formControlName="tagName" [readonly]="true">
     </mat-form-field>
 
     <mat-form-field [floatLabel]="this.floatLabelControl">
       <mat-label>Dados Coletados</mat-label>
-      <input matInput formControlName="colletedData" required>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="3" formControlName="colletedData" required></textarea>
     </mat-form-field>
 
     <mat-form-field class="full-width" [floatLabel]="this.floatLabelControl">
       <mat-label>Setor</mat-label>
-      <mat-select formControlName="sector" required>
+      <mat-select formControlName="sector" required (ngModelChange)="changeSector($event)">
         <mat-option *ngFor="let sector of sectorOptions" [value]="sector.id">
           {{sector.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>Dados de menores de idade?</mat-label>
+      <mat-select formControlName="underAgeData" required>
+        <mat-option [value]="true">
+          Sim
+        </mat-option>
+        <mat-option [value]="false">
+          Não
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -34,7 +47,11 @@
 
     <mat-form-field [floatLabel]="this.floatLabelControl">
       <mat-label>Razão dos dados</mat-label>
-      <input matInput formControlName="reasonData" required>
+      <mat-select formControlName="reasonData" required>
+        <mat-option *ngFor="let item of reasonData" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field [floatLabel]="this.floatLabelControl">
@@ -47,8 +64,10 @@
       <input matInput formControlName="securityData" required>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="goBack()">Voltar</button>
-    <button mat-raised-button color="primary" (click)="goNext()">Próximo</button>
+    <div>
+      <button style="margin-right: 10px;" mat-raised-button color="primary" (click)="goBack()">Voltar</button>
+      <button mat-raised-button color="primary" (click)="goNext()">Próximo</button>
+    </div>
   </ng-container>
 
   <!-- step 3 -->
@@ -64,28 +83,19 @@
     </mat-form-field>
 
     <mat-form-field [floatLabel]="this.floatLabelControl">
-      <mat-label>Dados de menores de idade?</mat-label>
-      <mat-select formControlName="underAgeData" required>
-        <mat-option [value]="true">
-          Sim
-        </mat-option>
-        <mat-option [value]="false">
-          Não
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field [floatLabel]="this.floatLabelControl">
       <mat-label>Dados Sensíveis</mat-label>
-      <input matInput formControlName="sensitiveData" required>
+      <input matInput formControlName="sensitiveData">
     </mat-form-field>
 
     <mat-form-field [floatLabel]="this.floatLabelControl">
       <mat-label>Responsável pelos dados</mat-label>
       <input matInput formControlName="controller" required>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="goBack()">Voltar</button>
-    <button mat-raised-button color="primary" (click)="submit()">Salvar</button>
+
+    <div>
+      <button style="margin-right: 10px;" mat-raised-button color="primary" (click)="goBack()">Voltar</button>
+      <button mat-raised-button color="primary" (click)="submit()">Salvar</button>
+    </div>
   </ng-container>
 
 </form>

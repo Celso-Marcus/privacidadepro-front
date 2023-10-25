@@ -11,6 +11,8 @@ import { IntermediarioChecklistTiComponent } from './intermediario/intermediario
 import { IntermediarioCookiesComponent } from './intermediario/intermediario-cookies/intermediario-cookies.component';
 import { IntermediarioRIPDComponent } from './intermediario/intermediario-ripd/intermediario-ripd.component';
 import { IntermediarioLiaComponent } from './intermediario/intermediario-lia/intermediario-lia.component';
+import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
+import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.component';
 
 
 
@@ -25,6 +27,8 @@ import { IntermediarioLiaComponent } from './intermediario/intermediario-lia/int
     IntermediarioCookiesComponent,
     IntermediarioRIPDComponent,
     IntermediarioLiaComponent,
+    ConfirmDialogComponent,
+    ErrorDialogComponent,
 
   ],
   imports: [
@@ -34,7 +38,9 @@ import { IntermediarioLiaComponent } from './intermediario/intermediario-lia/int
   ],
   exports: [
     HeaderComponent,
-    LayoutComponent
+    LayoutComponent,
+    ConfirmDialogComponent,
+    ErrorDialogComponent,
   ]
 })
 export class ComponentsModule { }

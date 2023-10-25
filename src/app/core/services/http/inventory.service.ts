@@ -1,6 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { API_URL } from "src/env/env-local";
+import { CreateInventory, Inventory } from "../../interfaces/inventory.interface";
+import { firstValueFrom } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -114,5 +116,17 @@ export class InventoryService {
     ]
 
     // return this.http.get<Quiz[]>(`${this.API_ROUTE}/${userId}`);
+  }
+
+  create(inventory: CreateInventory){
+    return this.http.post<Inventory>(this.API_ROUTE, inventory);
+  }
+
+  update(id: string, inventory: Inventory){
+    return this.http.patch<Inventory>(`${this.API_ROUTE}/${inventory.id}`, inventory);
+  }
+
+  delete(id: string): Promise<void> {
+    return firstValueFrom(this.http.delete<void>(`${this.API_ROUTE}/${id}`));
   }
 }

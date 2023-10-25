@@ -1,14 +1,23 @@
 <div class="inicio-inventario d-flex justify-content-center align-items-center">
   <mat-card class="d-flex justify-content-center align-items-center">
     <mat-card-header>
-      <mat-card-title>Inventário de Dados</mat-card-title>
-      <button style=" top: -2px; left: 13px;" mat-mini-fab color="primary" (click)="create()">
-        <mat-icon>add</mat-icon>
-      </button>
+
+      <ng-container *ngIf="inventoryForm; else elseButton">
+        <mat-card-title>Novo Inventário de Dados</mat-card-title>
+        <button style=" top: -2px; left: 13px;" mat-mini-fab color="primary" (click)="viewList()">
+          <mat-icon>list</mat-icon>
+        </button>
+      </ng-container>
+      <ng-template #elseButton>
+        <mat-card-title>Inventário de Dados</mat-card-title>
+        <button style=" top: -2px; left: 13px;" mat-mini-fab color="primary" (click)="create()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </ng-template>
     </mat-card-header>
     <mat-card-content class="text-center gap-1">
-      <ng-container *ngIf="inventoryCreation; else elseTemplate">
-        <app-inventario-criar-editar></app-inventario-criar-editar>
+      <ng-container *ngIf="inventoryForm; else elseTemplate">
+        <app-inventario-criar-editar [inventory]="inventory" [inventoryCreation]="inventoryCreation"></app-inventario-criar-editar>
       </ng-container>
       <ng-template #elseTemplate>
 
@@ -67,7 +76,6 @@
             aria-label="Select page of periodic elements">
           </mat-paginator>
         </div>
-
 
       </ng-template>
 
