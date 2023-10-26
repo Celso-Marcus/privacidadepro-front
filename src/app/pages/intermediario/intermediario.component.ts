@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-intermediario',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./intermediario.component.scss']
 })
 export class IntermediarioComponent {
-
+  constructor(
+    public router: Router,
+    ){}
 }

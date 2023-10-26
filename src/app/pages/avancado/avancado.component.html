@@ -1,0 +1,16 @@
+<div class="avancada d-flex justify-content-center align-items-center">
+  <ng-container *ngIf="this.router.routerState.snapshot.url === '/fase/avancada'; else elseTemplate">
+    <mat-card class="d-flex justify-content-center align-items-center" >
+      <mat-card-content class="text-center ">
+        <h1><strong>Fase Avançada</strong></h1>
+       <button class="button-32" [routerLink]="['comunicacao-com-titular']">Comunição com o titular</button>
+       <button class="button-32" [routerLink]="['politica-de-seguranca']">Política de segurança</button>
+       <button class="button-32" [routerLink]="['privacy-by-design']">Privacy by design</button>
+       <button class="button-32" [routerLink]="['incidentes']">Incidentes</button>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <router-outlet></router-outlet>
+  </ng-template>
+</div>

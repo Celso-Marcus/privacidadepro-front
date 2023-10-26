@@ -1,0 +1,17 @@
+<div class="intermediario d-flex justify-content-center align-items-center">
+  <ng-container *ngIf="this.router.routerState.snapshot.url === '/fase/intermediaria'; else elseTemplate">
+    <mat-card class="d-flex justify-content-center align-items-center" >
+      <mat-card-content class="text-center ">
+        <h1><strong>Fase Intermediária</strong></h1>
+        <button class="button-32" [routerLink]="['termo-de-uso']">Termo de Uso</button>
+       <button class="button-32" [routerLink]="['checklist-ti']">Checklist de TI</button>
+       <button class="button-32" [routerLink]="['cookies']">Cookies</button>
+       <button class="button-32" [routerLink]="['ripd']">RIPD</button>
+       <button class="button-32" [routerLink]="['lia']">LIA</button>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <router-outlet></router-outlet>
+  </ng-template>
+</div>

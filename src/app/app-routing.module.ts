@@ -36,6 +36,36 @@ const routes: Routes = [
   },
   {
     path: '',
+    component: LayoutComponent,
+    children: [
+      {
+        path: 'fase',
+        children: [
+          {
+            path: 'intermediaria',
+            loadChildren: () => import('./pages/intermediario/intermediario.module').then(m => m.IntermediarioModule)
+          },
+        ]
+      }
+    ]
+  },
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      {
+        path: 'fase',
+        children: [
+          {
+            path: 'avancada',
+            loadChildren: () => import('./pages/avancado/avancado.module').then(m => m.AvancadoModule)
+          },
+        ]
+      }
+    ]
+  },
+  {
+    path: '',
     component: PerfilComponent ,
     children: [
       {
