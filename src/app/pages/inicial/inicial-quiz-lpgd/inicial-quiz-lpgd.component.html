@@ -1,9 +1,37 @@
-<p>inicial-quiz-lpgd works!</p>
-<p>inicial-quiz-lpgd works!</p>
-<p>inicial-quiz-lpgd works!</p>
-<p>inicial-quiz-lpgd works!</p>
-<p>inicial-quiz-lpgd works!</p>
-<p>inicial-quiz-lpgd works!</p>
-<p>inicial-quiz-lpgd works!</p>
-<p>inicial-quiz-lpgd works!</p>
-<p>inicial-quiz-lpgd works!</p>
+<div class="inicio-inventario d-flex justify-content-center align-items-center">
+  <mat-card class="d-flex justify-content-center align-items-center">
+    <div *ngIf="showQuizComponent">
+      <!-- Componente do Quiz -->
+      <div class="container">
+        <div class="d-flex justify-content-center gap-5 mb-5">
+          <mat-card-title>Quiz LGPD</mat-card-title>
+          <button style="top: -2px; left: 13px;" mat-mini-fab color="primary" (click)="showQuizComponent = false">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Resultado</th>
+              <th> </th>
+              <th>Feito em</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{Resultado}}</td>
+              <td> </td>
+
+              <td>{{Data}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div *ngIf="!showQuizComponent">
+      <app-inicial-criar-quiz-lpgd></app-inicial-criar-quiz-lpgd>
+      <button mat-raised-button color="primary" (click)="showQuizComponent = true">Cancelar</button>
+    </div>
+  </mat-card>
+</div>
+

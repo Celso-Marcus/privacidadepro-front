@@ -1,0 +1,50 @@
+:host{
+  overflow-x: hidden;
+}
+
+mat-card{
+  background-color: #FFFF;
+  width: 45vw;
+  height: 20%;
+  border-radius: 2%;
+  top: 1rem;
+}
+mat-card-content {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+table{
+  width: 50rem;
+}
+
+mat-form-field{
+  width: 25vw;
+}
+
+.form{
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+.inicio-inventario {
+  background-color: #646464;
+  background-size: 400% 400%;
+  height: 200vh;
+  width: 100vw;
+}
+mat-card-title {
+  margin-bottom: 1rem;
+}
+mat-card-title {
+  color: #000000;
+
+  &:hover {
+    color: #ffbf00;
+  }
+}
+

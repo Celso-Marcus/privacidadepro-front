@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./inicial-quiz-lpgd.component.scss']
 })
 export class InicialQuizLpgdComponent {
-
+  Resultado: string = "Algum resultado";
+  Data: string = "Alguma data";
+  showQuizComponent: boolean = true;
+  
 }
