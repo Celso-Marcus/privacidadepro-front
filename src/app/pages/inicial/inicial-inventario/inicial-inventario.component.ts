@@ -38,12 +38,10 @@ export class InicialInventarioComponent implements OnInit {
   ) {
   }
 
-  ngAfterViewInit() {
+  async ngOnInit() {
+    const result = await this.inventoryService.getAll()
+    this.inventoryData = new MatTableDataSource<Inventory>(result);
     this.inventoryData.paginator = this.paginator;
-  }
-
-  ngOnInit(): void {
-    this.inventoryData = new MatTableDataSource<Inventory>(this.inventoryService.getAll());
   }
 
   // private generateRandomString() {
