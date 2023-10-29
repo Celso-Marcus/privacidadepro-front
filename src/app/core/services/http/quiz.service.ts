@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_URL } from 'src/env/env-local';
-import { Quiz } from '../../interfaces/quiz.interface';
+import { Quiz, CreateQuiz } from '../../interfaces/quiz.interface';
+import { Observable, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -42,14 +43,7 @@ export class QuizService {
     // return firstValueFrom(this.http.get<Quiz[]>(`${this.API_ROUTE}/${userId}`));
   }
 
-  create(quiz: Quiz){
-    return {
-      id: '1',
-      result: '1',
-      answers: '1',
-      userId: '1',
-      createdAt: new Date()
-    }
-    // return firstValueFrom(this.http.post<Quiz>(this.API_ROUTE, quiz));
+  create(answers: CreateQuiz): Promise<CreateQuiz[]> {
+    return firstValueFrom(this.http.post<CreateQuiz[]>(this.API_ROUTE, answers));
   }
 }

@@ -9,6 +9,5 @@ export interface Quiz {
 export interface CreateQuiz {
     result: string;
     answers: string;
-    userId: string;
 }
 
