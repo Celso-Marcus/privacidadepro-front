@@ -1,11 +1,13 @@
 <div class="inicio-inventario d-flex justify-content-center align-items-center">
   <mat-card class="d-flex justify-content-center align-items-center">
-    <div *ngIf="showQuizComponent">
-      <!-- Componente do Quiz -->
+    <ng-container *ngIf="!showQuizComponent">
+      <app-inicial-criar-quiz-lpgd (naomostrar)="off()"></app-inicial-criar-quiz-lpgd>
+    </ng-container>
+    <ng-container *ngIf="showQuizComponent">
       <div class="container">
         <div class="d-flex justify-content-center gap-5 mb-5">
           <mat-card-title>Quiz LGPD</mat-card-title>
-          <button style="top: -2px; left: 13px;" mat-mini-fab color="primary" (click)="showQuizComponent = false">
+          <button mat-mini-fab color="primary" (click)="show()">
             <mat-icon>add</mat-icon>
           </button>
         </div>
@@ -13,25 +15,17 @@
           <thead>
             <tr>
               <th>Resultado</th>
-              <th> </th>
               <th>Feito em</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{{Resultado}}</td>
-              <td> </td>
-
-              <td>{{Data}}</td>
+            <tr *ngFor="let quiz of quizzes">
+              <td>{{ quiz.result }}</td>
+              <td>{{ quiz.createdAt }}</td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
-    <div *ngIf="!showQuizComponent">
-      <app-inicial-criar-quiz-lpgd></app-inicial-criar-quiz-lpgd>
-      <button mat-raised-button color="primary" (click)="showQuizComponent = true">Cancelar</button>
-    </div>
+    </ng-container>
   </mat-card>
 </div>
-

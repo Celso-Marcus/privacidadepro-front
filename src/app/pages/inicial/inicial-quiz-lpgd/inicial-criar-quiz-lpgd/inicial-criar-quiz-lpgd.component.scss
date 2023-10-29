@@ -1,0 +1,22 @@
+.principal{
+  margin-top:480%;
+  margin-bottom: 60%;
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.but{
+  width: 40%;
+}
+
+.buts{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}

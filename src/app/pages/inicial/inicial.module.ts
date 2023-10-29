@@ -8,6 +8,7 @@ import { InicialQuizLpgdComponent } from './inicial-quiz-lpgd/inicial-quiz-lpgd.
 import { InicialInventarioComponent } from './inicial-inventario/inicial-inventario.component';
 import { InventarioCriarEditarComponent } from './inicial-inventario/inventario-criar-editar/inventario-criar-editar.component';
 import { InicialCriarQuizLpgdComponent } from './inicial-quiz-lpgd/inicial-criar-quiz-lpgd/inicial-criar-quiz-lpgd.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -24,6 +25,7 @@ import { InicialCriarQuizLpgdComponent } from './inicial-quiz-lpgd/inicial-criar
     CoreModule,
     ComponentsModule,
     InicialRouteRoutingModule,
+    FormsModule
   ]
 })
 export class InicialModule { }

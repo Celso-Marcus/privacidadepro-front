@@ -1,1 +1,196 @@
-<p>inicial-criar-quiz-lpgd works!</p>
+<div class="row">
+  <h2 class="text-black">Quiz LGPD</h2>
+</div>
+<form class="text-black principal">
+  <!-- 1 -->
+  <div class="card">
+    <div class="card-body" >
+      <div class="card-header">
+        <h3 class="card-title">{{topics[0] }}</h3>
+      </div>
+      <br><br>
+      <div class="form-group" *ngFor="let item of government; let index = index">
+        <label>{{ index + 1 }} - {{ item }}</label>
+        <div  class="form-check form-check-inline">
+          <input type="radio" name="qGovernment{{index+1}}" value="0" (change)="answers[index] = 0" defaultChecked>
+          <label>Ainda não</label>
+          <br>
+          <input type="radio" name="qGovernment{{index+1}}" value="1" (change)="answers[index] = 1">
+          <label>Tem planos para iniciar</label>
+          <br>
+          <input type="radio" name="qGovernment{{index+1}}" value="2" (change)="answers[index] = 2">
+          <label>Atende parcialmente</label>
+          <br>
+          <input type="radio" name="qGovernment{{index+1}}" value="3" (change)="answers[index] = 3">
+          <label>Atende integralmente</label>
+        </div>
+      </div>
+      <br><br>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <div class="card-body">
+      <div class="card-header">
+        <h3 class="card-title">{{ topics[1] }}</h3>
+      </div>
+      <br><br>
+      <div class="form-group">
+        <div class="form-group" *ngFor="let item of conformity; let index = index">
+          <label for="qConformity{{index+1}}">{{ index + 1 }} - {{ item }}</label>
+          <div  class="form-check form-check-inline">
+            <input type="radio" id="qConformity{{index+1}}" name="qConformity{{index+1}}" value="0" (change)="answers[index+6] = 0" defaultChecked>
+            <label for="qConformity{{index+1}}">Ainda não</label>
+            <br>
+            <input type="radio" id="qConformity{{index+1}}" name="qConformity{{index+1}}" value="1" (change)="answers[index+6] = 1">
+            <label for="qConformity{{index+1}}">Tem planos para iniciar</label>
+            <br>
+            <input type="radio" id="qConformity{{index+1}}" name="qConformity{{index+1}}" value="2" (change)="answers[index+6] = 2">
+            <label for="qConformity{{index+1}}">Atende parcialmente</label>
+            <br>
+            <input type="radio" id="qConformity{{index+1}}" name="qConformity{{index+1}}" value="3" (change)="answers[index+6] = 3">
+            <label for="qConformity{{index+1}}">Atende integralmente</label>
+          </div>
+        </div>
+      </div>
+      <br><br>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <div class="card-body">
+      <div class="card-header">
+        <h3 class="card-title">{{topics[2] }}</h3>
+      </div>
+      <br><br>
+      <div class="form-group"  *ngFor="let item of transparency; let index = index">
+        <label>{{ index + 1 }} - {{ item }}</label>
+        <div  class="form-check form-check-inline">
+          <input type="radio" name="qTransparency{{index+1}}" value="0" (change)="answers[index+12] = 0" defaultChecked>
+          <label>Ainda não</label>
+          <br>
+          <input type="radio" name="qTransparency{{index+1}}" value="1" (change)="answers[index+12] = 1">
+          <label>Tem planos para iniciar</label>
+          <br>
+          <input type="radio" name="qTransparency{{index+1}}" value="2" (change)="answers[index+12] = 2">
+          <label>Atende parcialmente</label>
+          <br>
+          <input type="radio" name="qTransparency{{index+1}}" value="3" (change)="answers[index+12] = 3">
+          <label>Atende integralmente</label>
+        </div>
+      </div>
+      <br><br>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <div class="card-body">
+      <div class="card-header">
+        <h3 class="card-title">{{ topics[3] }}</h3>
+      </div>
+      <br><br>
+      <div class="form-group" *ngFor="let item of traceability; let index = index">
+        <label>{{ index + 1 }} - {{ item }}</label>
+        <div  class="form-check form-check-inline">
+          <input type="radio" name="qTraceability{{index+1}}" value="0" (change)="answers[index+14] = 0" defaultChecked>
+          <label>Ainda não</label>
+          <br>
+          <input type="radio" name="qTraceability{{index+1}}" value="1" (change)="answers[index+14] = 1">
+          <label>Tem planos para iniciar</label>
+          <br>
+          <input type="radio" name="qTraceability{{index+1}}" value="2" (change)="answers[index+14] = 2">
+          <label>Atende parcialmente</label>
+          <br>
+          <input type="radio" name="qTraceability{{index+1}}" value="3" (change)="answers[index+14] = 3">
+          <label>Atende integralmente</label>
+        </div>
+      </div>
+      <br><br>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card">
+    <div class="card-body">
+      <div class="card-header">
+        <h3 class="card-title">{{ topics[4] }}</h3>
+      </div>
+      <br><br>
+      <div class="form-group" *ngFor="let item of adequacy; let index = index">
+        <label>{{ index + 1 }} - {{ item }}</label>
+        <div  class="form-check form-check-inline">
+          <input type="radio" name="qAdequacy{{index+1}}" value="0" (change)="answers[index+17] = 0" defaultChecked>
+          <label>Ainda não</label>
+          <br>
+          <input type="radio" name="qAdequacy{{index+1}}" value="1" (change)="answers[index+17] = 1">
+          <label>Tem planos para iniciar</label>
+          <br>
+          <input type="radio" name="qAdequacy{{index+1}}" value="2" (change)="answers[index+17] = 2">
+          <label>Atende parcialmente</label>
+          <br>
+          <input type="radio" name="qAdequacy{{index+1}}" value="3" (change)="answers[index+17] = 3">
+          <label>Atende integralmente</label>
+        </div>
+      </div>
+      <br><br>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card">
+    <div class="card-body">
+      <div class="card-header">
+        <h3 class="card-title">{{topics[5] }}</h3>
+      </div>
+      <br><br>
+      <div class="form-group" *ngFor="let item of security; let index = index">
+        <label>{{ index + 1 }} - {{ item }}</label>
+        <div  class="form-check form-check-inline">
+          <input type="radio" name="qSecurity{{index+1}}" value="0" (change)="answers[index+18] = 0" defaultChecked>
+          <label>Ainda não</label>
+          <br>
+          <input type="radio" name="qSecurity{{index+1}}" value="1" (change)="answers[index+18] = 1">
+          <label>Tem planos para iniciar</label>
+          <br>
+          <input type="radio" name="qSecurity{{index+1}}" value="2" (change)="answers[index+18] = 2">
+          <label>Atende parcialmente</label>
+          <br>
+          <input type="radio" name="qSecurity{{index+1}}" value="3" (change)="answers[index+18] = 3">
+          <label>Atende integralmente</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card">
+    <div class="card-body">
+      <div class="card-header ">
+        <h3 class="card-title ">{{ topics[6] }}</h3>
+      </div>
+      <div class="form-group" *ngFor="let item of violations; let index = index">
+        <label>{{ index + 1 }} - {{ item }}</label>
+        <div class="form-check form-check-inline">
+          <input type="radio" name="qViolation{{index+1}}" value="0" (change)="answers[index+21] = 0" defaultChecked>
+          <label>Ainda não</label>
+          <br>
+          <input type="radio" name="qViolation{{index+1}}" value="1" (change)="answers[index+21] = 1">
+          <label>Tem planos para iniciar</label>
+          <br>
+          <input type="radio" name="qViolation{{index+1}}" value="2" (change)="answers[index+21] = 2">
+          <label>Atende parcialmente</label>
+          <br>
+          <input type="radio" name="qViolation{{index+1}}" value="3" (change)="answers[index+21] = 3">
+          <label>Atende integralmente</label>
+        </div>
+      </div>
+    </div>
+    <div class="buts">
+      <button mat-raised-button class="but" color="primary" (click)="handleQuiz()">Salvar</button>
+      <button mat-raised-button class="but" color="warn" (click)="cancelarQuiz()">Cancelar</button>
+    </div>
+  </div>
+</form>
