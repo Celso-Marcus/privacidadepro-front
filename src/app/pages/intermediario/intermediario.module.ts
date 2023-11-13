@@ -10,6 +10,7 @@ import { IntermediarioCookiesComponent } from './intermediario-cookies/intermedi
 import { IntermediarioLiaComponent } from './intermediario-lia/intermediario-lia.component'
 import { IntermediarioRIPDComponent } from './intermediario-ripd/intermediario-ripd.component'
 import { IntermediarioTermoDeUsoComponent } from './intermediario-termo-de-uso/intermediario-termo-de-uso.component'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -28,6 +29,8 @@ import { IntermediarioTermoDeUsoComponent } from './intermediario-termo-de-uso/i
     CoreModule,
     ComponentsModule,
     IntermediarioRouteRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class IntermediarioModule { }
