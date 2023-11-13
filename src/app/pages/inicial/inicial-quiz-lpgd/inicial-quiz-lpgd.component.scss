@@ -2,13 +2,6 @@
   overflow-x: hidden;
 }
 
-mat-card{
-  background-color: #FFFF;
-  width: 45vw;
-  height: 20%;
-  border-radius: 2%;
-  top: 1rem;
-}
 mat-card-content {
   margin-bottom: 2rem;
   margin-top: 2rem;
@@ -47,4 +40,6 @@ mat-card-title {
     color: #ffbf00;
   }
 }
-
+.table td {
+  padding: 20px;
+}

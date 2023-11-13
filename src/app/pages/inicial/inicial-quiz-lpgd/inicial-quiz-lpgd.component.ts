@@ -21,15 +21,18 @@ export class InicialQuizLpgdComponent {
     this.showQuizComponent = true;
   }
   ngOnInit() {
-    this.carregarQuizzes();
-  }
+    this.quizService.getAll().subscribe((quizzes: Quiz[]) => {
+    this.quizzes = quizzes;
+    console.log(this.quizzes);
+
+  });
   // carregarQuizzes(): void {
   //   this.quizService.getAll().subscribe((quizzes: Quiz[]) => {
   //     this.quizzes = quizzes;
   //   });
   // }
-  carregarQuizzes() {
-    this.quizzes = this.quizService.getAll();
-    console.log(this.quizzes);
+  // carregarQuizzes() {
+  //   this.quizzes = this.quizService.getAll();
+  //   console.log(this.quizzes);
   }
 }

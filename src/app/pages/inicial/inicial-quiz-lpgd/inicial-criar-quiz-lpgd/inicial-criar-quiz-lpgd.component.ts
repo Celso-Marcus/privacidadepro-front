@@ -12,6 +12,8 @@ import { CreateQuiz } from 'src/app/core/interfaces/quiz.interface';
 export class InicialCriarQuizLpgdComponent {
   @Output() naomostrar = new EventEmitter<void>();
 
+  step: number = 1;
+
   violations: string[] = violations;
   security: string[] = security;
   government: string[] = government;
@@ -22,7 +24,8 @@ export class InicialCriarQuizLpgdComponent {
   topics: string[] = topics;
 
   answers = new Array(24).fill("0");
-
+  dpoName = 'teste marcus';
+  createdAt = new Date();
   cancelarQuiz() {
     this.naomostrar.emit();// Altera a variável para mostrar o componente do Quiz
   }
@@ -144,13 +147,17 @@ export class InicialCriarQuizLpgdComponent {
             const textResult = 'Iniciante';
             const raw = {
                 answers: this.answers.toString(),
-                result: textResult
+                result: textResult,
+                dpoName: this.dpoName,
+                createdAt: this.createdAt
             };
 
             this.quizService.create(raw)
             .then((result: any) => {
                 if (!result.error) {
-                    this.router.navigate(['/inicial/quiz-lgpd']);
+                    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+                    this.router.onSameUrlNavigation = 'reload';
+                    this.router.navigate([this.router.url]);
                 } else {
                     alert(result.message);
                 }
@@ -161,13 +168,17 @@ export class InicialCriarQuizLpgdComponent {
             const textResult = 'Básico';
             const raw = {
                 answers: this.answers.toString(),
-                result: textResult
+                result: textResult,
+                dpoName: this.dpoName,
+                createdAt: this.createdAt
             };
 
             this.quizService.create(raw)
             .then((result: any) => {
               if (!result.error) {
-                this.router.navigate(['/inicial/quiz-lgpd']);
+                    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+                    this.router.onSameUrlNavigation = 'reload';
+                    this.router.navigate([this.router.url]);
               } else {
                 alert(result.message);
               }
@@ -177,13 +188,17 @@ export class InicialCriarQuizLpgdComponent {
             const textResult = 'Intermediário';
             const raw: CreateQuiz = {
                 answers: this.answers.toString(),
-                result: textResult
+                result: textResult,
+                dpoName: this.dpoName,
+                createdAt: this.createdAt
             };
 
             this.quizService.create(raw)
             .then((result: any) => {
               if (!result.error) {
-                this.router.navigate(['/inicial/quiz-lgpd']);
+                    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+                    this.router.onSameUrlNavigation = 'reload';
+                    this.router.navigate([this.router.url]);
               } else {
                 alert(result.message);
               }
@@ -193,12 +208,16 @@ export class InicialCriarQuizLpgdComponent {
             const textResult = 'Intermediário Superior';
             const raw = {
                 answers: this.answers.toString(),
-                result: textResult
+                result: textResult,
+                dpoName: this.dpoName,
+                createdAt: this.createdAt
             };
             this.quizService.create(raw)
             .then((result: any) => {
               if (!result.error) {
-                this.router.navigate(['/inicial/quiz-lgpd']);
+                    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+                    this.router.onSameUrlNavigation = 'reload';
+                    this.router.navigate([this.router.url]);
               } else {
                 alert(result.message);
               }
@@ -208,17 +227,33 @@ export class InicialCriarQuizLpgdComponent {
             const textResult = 'Avançado';
             const raw = {
                 answers: this.answers.toString(),
-                result: textResult
+                result: textResult,
+                dpoName: this.dpoName,
+                createdAt: this.createdAt
             };
 
             this.quizService.create(raw)
             .then((result: any) => {
               if (!result.error) {
-                this.router.navigate(['/inicial/quiz-lgpd']);
+                    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+                    this.router.onSameUrlNavigation = 'reload';
+                    this.router.navigate([this.router.url]);
               } else {
                 alert(result.message);
               }
             });
         }
+    }
+
+    goNext() {
+      if (this.step < 7) {
+        this.step++;
+      }
+    }
+
+    goBack() {
+      if (this.step > 1) {
+        this.step--;
+      }
     }
 }
