@@ -9,5 +9,7 @@ export interface Quiz {
 export interface CreateQuiz {
     result: string;
     answers: string;
+    dpoName: string;
+    createdAt: Date;
 }
 

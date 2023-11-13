@@ -16,33 +16,13 @@ export class QuizService {
   ) { }
 
   //: Promise<Quiz[]>
-  getAll(){
-    return [
-      {
-        id: '1',
-        result: '1',
-        answers: '1',
-        userId: '1',
-        createdAt: new Date()
-      },
-      {
-        id: '2',
-        result: '2',
-        answers: '2',
-        userId: '2',
-        createdAt: new Date()
-      },
-      {
-        id: '3',
-        result: '3',
-        answers: '3',
-        userId: '3',
-        createdAt: new Date()
-      }
-    ]
-    // return firstValueFrom(this.http.get<Quiz[]>(`${this.API_ROUTE}/${userId}`));
-  }
+  // getAll(){
+  //   return firstValueFrom(this.http.get<Quiz[]>(`${this.API_ROUTE}/${userId}`));
+  // }
 
+  getAll(): Observable<Quiz[]> {
+    return this.http.get<Quiz[]>(`${this.API_ROUTE}`);
+  }
   create(answers: CreateQuiz): Promise<CreateQuiz[]> {
     return firstValueFrom(this.http.post<CreateQuiz[]>(this.API_ROUTE, answers));
   }
