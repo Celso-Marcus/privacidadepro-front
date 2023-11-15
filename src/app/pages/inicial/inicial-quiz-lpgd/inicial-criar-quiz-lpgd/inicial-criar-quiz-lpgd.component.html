@@ -1,5 +1,4 @@
-<form>
-  <!-- 1 -->
+<form [formGroup]="formulario">
   <ng-container *ngIf="step == 1">
     <div class="card">
       <div class="card-body" >
@@ -7,6 +6,13 @@
           <h3 class="card-title">{{topics[0] }}</h3>
         </div>
         <br><br>
+          <div class="form-group">
+            <label for="email">Nome do dpo</label>
+            <input id="dpoName" formControlName="dpoName" type="text" class="form-control" placeholder="Digite seu Nome">
+          </div>
+          <div class="mensagem__erro" *ngIf="formulario.get('dpoName')?.errors && formulario.get('dpoName')?.touched">
+            Dpo é obrigatório
+          </div>
           <div class="form-group" *ngFor="let item of government; let index = index">
             <label>{{ index + 1 }} - {{ item }}</label>
             <div  class="form-check form-check-inline">
@@ -25,7 +31,7 @@
           </div>
           <div class="buts">
             <button mat-raised-button class="but" color="warn" (click)="cancelarQuiz()">Cancelar</button>
-            <button mat-raised-button color="primary" (click)="goNext()">Próximo</button>
+            <button mat-raised-button [ngClass]="habilitarBotao()" [disabled]="!formulario.valid" color="primary" (click)="goNext()">Próximo</button>
           </div>
           <br><br>
         </div>
@@ -216,8 +222,8 @@
           </div>
           <div class="buts">
             <button mat-raised-button color="primary" (click)="goBack()">Voltar</button>
-            <button mat-raised-button class="but" color="primary" (click)="handleQuiz()">Salvar</button>
-            <button mat-raised-button class="but" color="warn" (click)="cancelarQuiz()">Cancelar</button>
+            <button mat-raised-button class="butsss" (click)="handleQuiz()">Salvar</button>
+            <button mat-raised-button color="warn" (click)="cancelarQuiz()">Cancelar</button>
           </div>
       </div>
     </div>

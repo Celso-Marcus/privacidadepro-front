@@ -3,6 +3,7 @@ import {adequacy, conformity, government, security, traceability, violations, tr
 import {QuizService} from '../../../../core/services/http/quiz.service'
 import { Router } from '@angular/router';
 import { CreateQuiz } from 'src/app/core/interfaces/quiz.interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-inicial-criar-quiz-lpgd',
@@ -24,13 +25,29 @@ export class InicialCriarQuizLpgdComponent {
   topics: string[] = topics;
 
   answers = new Array(24).fill("0");
-  dpoName = 'teste marcus';
   createdAt = new Date();
   maturityResult: number = 0;
   cancelarQuiz() {
     this.naomostrar.emit();// Altera a variável para mostrar o componente do Quiz
   }
-  constructor( private router: Router , private quizService: QuizService){}
+  constructor( private router: Router , private quizService: QuizService, private formBuilder: FormBuilder){}
+  formulario!: FormGroup;
+
+  ngOnInit():void {
+    this.formulario = this.formBuilder.group({
+      dpoName: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(3)
+      ])]
+    })
+  }
+  habilitarBotao(): string {
+    if(this.formulario.valid){
+      return 'buts'
+    } else {
+      return 'botao__desabilitado'
+    }
+  }
 
   handleQuiz = async () => {
         for(let i = 0; i < this.answers.length; i++){
@@ -147,7 +164,7 @@ export class InicialCriarQuizLpgdComponent {
             const raw = {
                 answers: this.answers.toString(),
                 result: textResult,
-                dpoName: this.dpoName,
+                dpoName: this.formulario.get('dpoName')?.value,
                 createdAt: this.createdAt
             };
 
@@ -166,7 +183,7 @@ export class InicialCriarQuizLpgdComponent {
             const raw = {
                 answers: this.answers.toString(),
                 result: textResult,
-                dpoName: this.dpoName,
+                dpoName: this.formulario.get('dpoName')?.value,
                 createdAt: this.createdAt
             };
 
@@ -185,7 +202,7 @@ export class InicialCriarQuizLpgdComponent {
             const raw: CreateQuiz = {
                 answers: this.answers.toString(),
                 result: textResult,
-                dpoName: this.dpoName,
+                dpoName: this.formulario.get('dpoName')?.value,
                 createdAt: this.createdAt
             };
 
@@ -204,7 +221,7 @@ export class InicialCriarQuizLpgdComponent {
             const raw = {
                 answers: this.answers.toString(),
                 result: textResult,
-                dpoName: this.dpoName,
+                dpoName: this.formulario.get('dpoName')?.value,
                 createdAt: this.createdAt
             };
             this.quizService.create(raw)
@@ -222,7 +239,7 @@ export class InicialCriarQuizLpgdComponent {
             const raw = {
                 answers: this.answers.toString(),
                 result: textResult,
-                dpoName: this.dpoName,
+                dpoName: this.formulario.get('dpoName')?.value,
                 createdAt: this.createdAt
             };
 
@@ -240,8 +257,10 @@ export class InicialCriarQuizLpgdComponent {
     }
 
     goNext() {
-      if (this.step < 7) {
-        this.step++;
+      if(this.formulario.valid){
+        if (this.step < 7) {
+          this.step++;
+        }
       }
     }
 
