@@ -3,6 +3,7 @@ export interface Quiz {
     result: string;
     answers: string;
     userId: string;
+    dpoName: string;
     createdAt: Date;
 }
 

@@ -24,7 +24,7 @@ mat-form-field{
 }
 
 
-.inicio-inventario {
+.inicio-quiz {
   background-color: #646464;
   background-size: 400% 400%;
   height: 200vh;
@@ -41,5 +41,9 @@ mat-card-title {
   }
 }
 .table td {
-  padding: 20px;
+  padding: 0.9rem 0.5rem;
+}
+
+.quiz-content{
+  border-radius: 2%;
 }

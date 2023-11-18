@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {adequacy, conformity, government, security, traceability, violations, transparency , topics} from '../../../../core/constants/quizQuestions'
-import {QuizService} from '../../../../core/services/http/quiz.service'
-import { Router } from '@angular/router';
-import { CreateQuiz } from 'src/app/core/interfaces/quiz.interface';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { adequacy, conformity, government, security, topics, traceability, transparency, violations } from '../../../../core/constants/quizQuestions';
+import { QuizService } from '../../../../core/services/http/quiz.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-inicial-criar-quiz-lpgd',
@@ -24,16 +24,19 @@ export class InicialCriarQuizLpgdComponent {
   transparency: string[] = transparency;
   topics: string[] = topics;
 
-  answers = new Array(24).fill("0");
+  answers: number[] = new Array(24).fill(Number(0));
   createdAt = new Date();
   maturityResult: number = 0;
-  cancelarQuiz() {
-    this.naomostrar.emit();// Altera a variável para mostrar o componente do Quiz
-  }
-  constructor( private router: Router , private quizService: QuizService, private formBuilder: FormBuilder){}
   formulario!: FormGroup;
 
-  ngOnInit():void {
+  constructor(
+    private router: Router,
+    private quizService: QuizService,
+    private formBuilder: FormBuilder,
+    private _snackbar: MatSnackBar
+  ) { }
+
+  ngOnInit(): void {
     this.formulario = this.formBuilder.group({
       dpoName: ['', Validators.compose([
         Validators.required,
@@ -42,231 +45,125 @@ export class InicialCriarQuizLpgdComponent {
     })
   }
   habilitarBotao(): string {
-    if(this.formulario.valid){
+    if (this.formulario.valid) {
       return 'buts'
     } else {
       return 'botao__desabilitado'
     }
   }
 
-  handleQuiz = async () => {
-        for(let i = 0; i < this.answers.length; i++){
-            if ( i < 6 ){
-                switch(this.answers[i]){
-                    case 0:
-                        this.maturityResult += 0;
-                    break;
-                    case 1:
-                        this.maturityResult += (0.25*0.25);
-                    break;
-                    case 2:
-                        this.maturityResult += (0.5*0.25);
-                    break;
-                    case 3:
-                        this.maturityResult += (1*0.25);
-                    break;
-                  }
-            }else if (i >= 6 && i <= 11) {
-                switch(this.answers[i]){
-                    case 0:
-                        this.maturityResult += 0;
-                    break;
-                    case 1:
-                        this.maturityResult += (0.25*0.25);
-                    break;
-                    case 2:
-                        this.maturityResult += (0.5*0.25);
-                    break;
-                    case 3:
-                        this.maturityResult += (1*0.25);
-                    break;
-                }
-            }else if (i >= 12 && i <= 13){
-                switch(this.answers[i]){
-                    case 0:
-                        this.maturityResult += 0;
-                    break;
-                    case 1:
-                        this.maturityResult += (0.25*0.1);
-                    break;
-                    case 2:
-                        this.maturityResult += (0.5*0.1);
-                    break;
-                    case 3:
-                        this.maturityResult += (1*0.1);
-                    break;
-                }
-            }else if (i >= 14 && i <= 16){
-                switch(this.answers[i]){
-                    case 0:
-                        this.maturityResult += 0;
-                    break;
-                    case 1:
-                        this.maturityResult += (0.25*0.05);
-                    break;
-                    case 2:
-                        this.maturityResult += (0.5*0.05);
-                    break;
-                    case 3:
-                        this.maturityResult += (1*0.05);
-                    break;
-                }
-            }else if (i === 17){
-                switch(this.answers[i]){
-                    case 0:
-                        this.maturityResult += 0;
-                    break;
-                    case 1:
-                        this.maturityResult += (0.25*0.05);
-                    break;
-                    case 2:
-                        this.maturityResult += (0.5*0.05);
-                    break;
-                    case 3:
-                        this.maturityResult += (1*0.05);
-                    break;
-                }
-            }else if (i >= 18 && i <= 20){
-                switch(this.answers[i]){
-                    case 0:
-                        this.maturityResult += 0;
-                    break;
-                    case 1:
-                        this.maturityResult += (0.25*0.15);
-                    break;
-                    case 2:
-                        this.maturityResult += (0.5*0.15);
-                    break;
-                    case 3:
-                        this.maturityResult += (1*0.15);
-                    break;
-                }
-            }else if (i >= 21 && i <= 23){
-                switch(this.answers[i]){
-                    case 0:
-                        this.maturityResult += 0;
-                    break;
-                    case 1:
-                        this.maturityResult += (0.25*0.15);
-                    break;
-                    case 2:
-                        this.maturityResult += (0.5*0.15);
-                    break;
-                    case 3:
-                        this.maturityResult += (1*0.15);
-                    break;
-                }
-            }
-        }
-        this.maturityResult = this.maturityResult * 10;
-        if (this.maturityResult < 2.99) {
-            const textResult = 'Iniciante';
-            const raw = {
-                answers: this.answers.toString(),
-                result: textResult,
-                dpoName: this.formulario.get('dpoName')?.value,
-                createdAt: this.createdAt
-            };
+  cancelarQuiz() {
+    this.naomostrar.emit();// Altera a variável para mostrar o componente do Quiz
+  }
 
-            this.quizService.create(raw)
-            .then((result: any) => {
-                if (!result.error) {
-                    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-                    this.router.onSameUrlNavigation = 'reload';
-                    this.router.navigate([this.router.url]);
-                } else {
-                    alert(result.message);
-                }
-            });
-        }else if ((this.maturityResult >= 3.00) && (this.maturityResult <= 4.99)){
-            const textResult = 'Básico';
-            const raw = {
-                answers: this.answers.toString(),
-                result: textResult,
-                dpoName: this.formulario.get('dpoName')?.value,
-                createdAt: this.createdAt
-            };
+  async handleQuiz() {
+    const weightMappings = [
+      [0, 0],
+      [1, 0.25],
+      [2, 0.5],
+      [3, 1],
+    ];
 
-            this.quizService.create(raw)
-            .then((result: any) => {
-              if (!result.error) {
-                    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-                    this.router.onSameUrlNavigation = 'reload';
-                    this.router.navigate([this.router.url]);
-              } else {
-                alert(result.message);
-              }
-            });
-        }else if ((this.maturityResult >= 5.00) && (this.maturityResult <= 6.99)){
-            const textResult = 'Intermediário';
-            const raw: CreateQuiz = {
-                answers: this.answers.toString(),
-                result: textResult,
-                dpoName: this.formulario.get('dpoName')?.value,
-                createdAt: this.createdAt
-            };
+    for (let i = 0; i < this.answers.length; i++) {
+      const answer = this.answers[i];
+      let weight = 0;
 
-            this.quizService.create(raw)
-            .then((result: any) => {
-              if (!result.error) {
-                    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-                    this.router.onSameUrlNavigation = 'reload';
-                    this.router.navigate([this.router.url]);
-              } else {
-                alert(result.message);
-              }
-            });
-        }else if ((this.maturityResult >= 7.00) && (this.maturityResult <= 8.99)){
-            const textResult = 'Intermediário Superior';
-            const raw = {
-                answers: this.answers.toString(),
-                result: textResult,
-                dpoName: this.formulario.get('dpoName')?.value,
-                createdAt: this.createdAt
-            };
-            this.quizService.create(raw)
-            .then((result: any) => {
-              if (!result.error) {
-                    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-                    this.router.onSameUrlNavigation = 'reload';
-                    this.router.navigate([this.router.url]);
-              } else {
-                alert(result.message);
-              }
-            });
-        }else if (this.maturityResult >= 9.00){
-            const textResult = 'Avançado';
-            const raw = {
-                answers: this.answers.toString(),
-                result: textResult,
-                dpoName: this.formulario.get('dpoName')?.value,
-                createdAt: this.createdAt
-            };
+      console.log(answer);
 
-            this.quizService.create(raw)
-            .then((result: any) => {
-              if (!result.error) {
-                    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-                    this.router.onSameUrlNavigation = 'reload';
-                    this.router.navigate([this.router.url]);
-              } else {
-                alert(result.message);
-              }
-            });
-        }
+      if (i < 6) {
+        weight = 0.25;
+      }
+      else if (i <= 11) {
+        weight = 0.25;
+      }
+      else if (i <= 13) {
+        weight = 0.1;
+      }
+      else if (i <= 16) {
+        weight = 0.05;
+      }
+      else if (i === 17) {
+        weight = 0.05;
+      }
+      else if (i <= 20) {
+        weight = 0.15;
+      }
+      else if (i <= 23) {
+        weight = 0.15;
+      }
+
+      const [value, multiplier] = weightMappings[answer];
+      this.maturityResult += value * (weight * multiplier);
     }
 
-    goNext() {
-      if(this.formulario.valid){
-        if (this.step < 7) {
-          this.step++;
-        }
+    this.maturityResult *= 10;
+
+
+    const result = this.getResultFromMaturityResult();
+
+    const raw = {
+      answers: this.answers.toString(),
+      result,
+      dpoName: this.formulario.get('dpoName')?.value,
+      createdAt: this.createdAt,
+    };
+
+    try {
+      await this.quizService.create(raw);
+      this.step = 1;
+      this._snackbar.open(`Quiz feito com sucesso! Seu resultado foi ${result}`, 'Fechar', {
+        duration: 5000
+      });
+      this.router.navigate(['/fase/inicial']);
+    }
+    catch (error: any) {
+      console.error(error);
+      this._snackbar.open(`Erro ao criar o quiz!`, 'Fechar', {
+        duration: 3000
+      });
+    }
+  }
+
+  private getResultFromMaturityResult() {
+    if (this.maturityResult < 2.99) {
+      return 'Iniciante';
+    }
+    else if (this.maturityResult >= 3.0 && this.maturityResult <= 4.99) {
+      return 'Básico';
+    }
+    else if (this.maturityResult >= 5.0 && this.maturityResult <= 6.99) {
+      return 'Intermediário';
+    }
+    else if (this.maturityResult >= 7.0 && this.maturityResult <= 8.99) {
+      return 'Intermediário Superior';
+    }
+    else {
+      return 'Avançado';
+    }
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if ((event.code === 'ArrowRight' || event.code === 'Enter') && this.step < 7) {
+      this.goNext();
+    }
+    if (event.code === 'ArrowLeft') {
+      this.goBack();
+    }
+  }
+
+  goNext() {
+    console.log(this.answers)
+    if (this.formulario.valid) {
+      if (this.step < 7) {
+        this.step++;
       }
     }
+  }
 
-    goBack() {
-      if (this.step > 1) {
-        this.step--;
-      }
+  goBack() {
+    if (this.step > 1) {
+      this.step--;
     }
+  }
 }

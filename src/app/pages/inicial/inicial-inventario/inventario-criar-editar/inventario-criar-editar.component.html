@@ -13,13 +13,9 @@
         cdkAutosizeMaxRows="3" formControlName="colletedData" required></textarea>
     </mat-form-field>
 
-    <mat-form-field class="full-width" [floatLabel]="this.floatLabelControl">
+    <mat-form-field [floatLabel]="this.floatLabelControl">
       <mat-label>Setor</mat-label>
-      <mat-select formControlName="sector" required (ngModelChange)="changeSector($event)">
-        <mat-option *ngFor="let sector of sectorOptions" [value]="sector.id">
-          {{sector.name}}
-        </mat-option>
-      </mat-select>
+      <input matInput formControlName="sector" required>
     </mat-form-field>
 
     <mat-form-field [floatLabel]="this.floatLabelControl">

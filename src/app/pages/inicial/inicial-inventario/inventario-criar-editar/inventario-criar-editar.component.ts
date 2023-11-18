@@ -5,9 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { REASON_DATA } from 'src/app/core/constants/inventory';
 import { Inventory } from 'src/app/core/interfaces/inventory.interface';
-import { Sector } from 'src/app/core/interfaces/sector.interface';
 import { InventoryService } from 'src/app/core/services/http/inventory.service';
-import { SectorService } from 'src/app/core/services/http/sector.service';
 
 @Component({
   selector: 'app-inventario-criar-editar',
@@ -28,7 +26,7 @@ export class InventarioCriarEditarComponent implements OnInit {
 
   step: number = 1;
 
-  sectorOptions!: Sector[];
+  sectorOptions!: string[];
 
   reasonData: string[] = REASON_DATA;
 
@@ -48,7 +46,6 @@ export class InventarioCriarEditarComponent implements OnInit {
   }
 
   constructor(
-    private readonly sectorService: SectorService,
     private readonly inventoryService: InventoryService,
     private formBuilder: NonNullableFormBuilder,
     private readonly router: Router,
@@ -61,7 +58,6 @@ export class InventarioCriarEditarComponent implements OnInit {
     if(!this.inventoryCreation && this.inventory){
       this.fillForm(this.inventory);
     }
-    this.sectorOptions = this.sectorService.getAll();
   }
 
   fillForm(inventory: Inventory) {
@@ -111,8 +107,7 @@ export class InventarioCriarEditarComponent implements OnInit {
     })
   }
 
-  private generateInventoryTagName(sectorId: number) {
-    const sectorName = this.sectorOptions.find(x => x.id == sectorId);
-    return `${sectorName?.name}-Inventário-${this.sectorOptions.length + 1}`
+  private generateInventoryTagName(sectorName: number) {
+    return `${sectorName}-Inventário-${this.sectorOptions.length + 1}`
   }
 }
