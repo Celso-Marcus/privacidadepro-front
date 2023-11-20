@@ -2,7 +2,7 @@ export interface Inventory {
   id: string;
   tagName: string;
   sector: string;
-  colletedData: string;
+  collectedData: string;
   sourceData: string;
   reasonData: string;
   howStorage: string;

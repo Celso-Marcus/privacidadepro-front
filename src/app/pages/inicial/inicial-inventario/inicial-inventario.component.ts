@@ -26,6 +26,7 @@ export class InicialInventarioComponent implements OnInit {
   inventoryCreation = false;
 
   inventoryData!: MatTableDataSource<Inventory>;
+  inventorySize = 0;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -39,7 +40,8 @@ export class InicialInventarioComponent implements OnInit {
   }
 
   async ngOnInit() {
-    const result = await this.inventoryService.getAll()
+    const result = await this.inventoryService.getAll();
+    this.inventorySize = result.length;
     this.inventoryData = new MatTableDataSource<Inventory>(result);
     this.inventoryData.paginator = this.paginator;
   }
@@ -73,6 +75,7 @@ export class InicialInventarioComponent implements OnInit {
   viewList() {
     this.inventoryForm = false;
     this.inventoryCreation = false;
+    location.reload();
   }
 
   create() {

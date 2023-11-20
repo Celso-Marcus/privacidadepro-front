@@ -17,7 +17,7 @@
     </mat-card-header>
     <mat-card-content class="text-center gap-1">
       <ng-container *ngIf="inventoryForm; else elseTemplate">
-        <app-inventario-criar-editar [inventory]="inventory" [inventoryCreation]="inventoryCreation"></app-inventario-criar-editar>
+        <app-inventario-criar-editar [inventorySize]="inventorySize" [inventory]="inventory" [inventoryCreation]="inventoryCreation"></app-inventario-criar-editar>
       </ng-container>
       <ng-template #elseTemplate>
 
