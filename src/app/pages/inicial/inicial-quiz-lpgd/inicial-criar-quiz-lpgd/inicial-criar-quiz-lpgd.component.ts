@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./inicial-criar-quiz-lpgd.component.scss']
 })
 export class InicialCriarQuizLpgdComponent {
-  @Output() naomostrar = new EventEmitter<void>();
+  @Output() dontShow = new EventEmitter<void>();
 
   step: number = 1;
 
@@ -44,7 +44,7 @@ export class InicialCriarQuizLpgdComponent {
       ])]
     })
   }
-  habilitarBotao(): string {
+  enableButton(): string {
     if (this.formulario.valid) {
       return 'buts'
     } else {
@@ -52,8 +52,8 @@ export class InicialCriarQuizLpgdComponent {
     }
   }
 
-  cancelarQuiz() {
-    this.naomostrar.emit();// Altera a variável para mostrar o componente do Quiz
+  cancelQuiz() {
+    this.dontShow.emit();// Altera a variável para mostrar o componente do Quiz
   }
 
   async handleQuiz() {

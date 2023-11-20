@@ -20,19 +20,7 @@ export class InicialQuizLpgdComponent {
   off(){
     this.showQuizComponent = true;
   }
-  ngOnInit() {
-    this.quizService.getAll().subscribe((quizzes: Quiz[]) => {
-    this.quizzes = quizzes;
-    console.log(this.quizzes);
-
-  });
-  // carregarQuizzes(): void {
-  //   this.quizService.getAll().subscribe((quizzes: Quiz[]) => {
-  //     this.quizzes = quizzes;
-  //   });
-  // }
-  // carregarQuizzes() {
-  //   this.quizzes = this.quizService.getAll();
-  //   console.log(this.quizzes);
+  async ngOnInit() {
+    this.quizzes = await this.quizService.getAll();
   }
 }

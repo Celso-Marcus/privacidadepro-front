@@ -31,7 +31,7 @@
           </div>
           <div class="buts">
             <!-- <button mat-raised-button class="but" color="warn" (click)="cancelarQuiz()">Cancelar</button> -->
-            <button mat-raised-button [ngClass]="habilitarBotao()" [disabled]="!formulario.valid" color="primary" (click)="goNext()">Próximo</button>
+            <button mat-raised-button [ngClass]="enableButton()" [disabled]="!formulario.valid" color="primary" (click)="goNext()">Próximo</button>
           </div>
           <br><br>
         </div>
@@ -223,7 +223,7 @@
           <div class="buts">
             <button mat-raised-button color="primary" (click)="goBack()">Voltar</button>
             <button mat-raised-button class="butsss" (click)="handleQuiz()">Salvar</button>
-            <button mat-raised-button color="warn" (click)="cancelarQuiz()">Cancelar</button>
+            <button mat-raised-button color="warn" (click)="cancelQuiz()">Cancelar</button>
           </div>
       </div>
     </div>

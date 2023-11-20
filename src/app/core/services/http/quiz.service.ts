@@ -20,8 +20,8 @@ export class QuizService {
   //   return firstValueFrom(this.http.get<Quiz[]>(`${this.API_ROUTE}/${userId}`));
   // }
 
-  getAll(): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>(`${this.API_ROUTE}`);
+  getAll(): Promise<Quiz[]> {
+    return firstValueFrom(this.http.get<Quiz[]>(`${this.API_ROUTE}`));
   }
   create(answers: CreateQuiz): Promise<CreateQuiz[]> {
     return firstValueFrom(this.http.post<CreateQuiz[]>(this.API_ROUTE, answers));

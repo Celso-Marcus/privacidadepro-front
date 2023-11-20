@@ -1,6 +1,6 @@
 <div class="inicio-quiz d-flex justify-content-center align-items-center">
   <ng-container *ngIf="!showQuizComponent">
-    <app-inicial-criar-quiz-lpgd (naomostrar)="off()"></app-inicial-criar-quiz-lpgd>
+    <app-inicial-criar-quiz-lpgd (dontShow)="off()"></app-inicial-criar-quiz-lpgd>
   </ng-container>
   <div class="quiz-content d-flex bg-white justify-content-center align-items-center">
     <ng-container *ngIf="showQuizComponent">
