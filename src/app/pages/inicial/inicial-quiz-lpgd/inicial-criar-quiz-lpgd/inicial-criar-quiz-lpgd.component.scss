@@ -1,7 +1,3 @@
-form{
-  margin-top:52%;
-  margin-bottom: 38%;
-}
 .form-group{
   display: flex;
   flex-direction: column;
@@ -30,3 +26,8 @@ form{
 
 }
 
+:host {
+  display: block;
+  overflow-y: auto;
+  max-height: 50rem;
+}
