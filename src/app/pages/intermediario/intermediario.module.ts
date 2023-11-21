@@ -10,7 +10,8 @@ import { IntermediarioCookiesComponent } from './intermediario-cookies/intermedi
 import { IntermediarioLiaComponent } from './intermediario-lia/intermediario-lia.component'
 import { IntermediarioRIPDComponent } from './intermediario-ripd/intermediario-ripd.component'
 import { IntermediarioTermoDeUsoComponent } from './intermediario-termo-de-uso/intermediario-termo-de-uso.component'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChecklistTiControleDeAcessoComponent } from './intermediario-checklist-ti/checklist-ti-controle-de-acesso/checklist-ti-controle-de-acesso.component';
+import { MaterialModule } from 'src/app/shared/material/material.module';
 
 
 
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     IntermediarioCookiesComponent,
     IntermediarioLiaComponent,
     IntermediarioRIPDComponent,
-    IntermediarioTermoDeUsoComponent
+    IntermediarioTermoDeUsoComponent,
+    ChecklistTiControleDeAcessoComponent
   ],
   imports: [
     CommonModule,
@@ -29,8 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CoreModule,
     ComponentsModule,
     IntermediarioRouteRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
+    MaterialModule,
   ]
 })
 export class IntermediarioModule { }
