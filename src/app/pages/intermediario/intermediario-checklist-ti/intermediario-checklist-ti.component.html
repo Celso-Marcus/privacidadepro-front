@@ -1,20 +1,19 @@
-<div class="container">
-  <h2 class="text-center mb-5">Painel Checklist</h2>
-    <div class="painel">
-      <mat-button-toggle-group class="segunda w-100" aria-label="Painel 1">
-        <button mat-raised-button routerLink="chacklist/introducao" class="rounded-pill mb-2">Introdução</button>
-        <button mat-raised-button routerLink="chacklist/controle-de-acesso" class="rounded-pill mb-2">Controle de Acesso</button>
-        <button mat-raised-button routerLink="chacklist/dados-armazenados" class="rounded-pill mb-2">Dados Armazenados</button>
-        <button mat-raised-button routerLink="chacklist/seguranca-nas-comunicacoes" class="rounded-pill mb-2">Segurança nas Comunicações</button>
-        <button mat-raised-button routerLink="chacklist/gerenciamento-de-vulnerabilidade" class="rounded-pill mb-2">Gerenciamento de Vulnerabilidade</button>
-        <button mat-raised-button routerLink="chacklist/dispositivos-moveis" class="rounded-pill mb-2">Dispositivos Móveis</button>
-      </mat-button-toggle-group>
-      <mat-button-toggle-group class="segunda w-100" aria-label="Painel 2">
-        <button mat-raised-button routerLink="chacklist/servicos-em-nuvem" class="rounded-pill mb-2">Serviços em Nuvem</button>
-        <button mat-raised-button routerLink="chacklist/cookies" class="rounded-pill mb-2">Cookies</button>
-        <button mat-raised-button routerLink="chacklist/politica-de-seguranca-da-informacao" class="rounded-pill mb-2">Política de Segurança da Informação</button>
-        <button mat-raised-button routerLink="chacklist/conscientizacao-e-treinamento" class="rounded-pill mb-2">Conscientização e Treinamento</button>
-        <button mat-raised-button routerLink="chacklist/contratos" class="rounded-pill mb-2">Contratos</button>
-      </mat-button-toggle-group>
+<mat-card class="d-flex justify-content-center align-items-center">
+  <h2 class="text-center mt-3 d-flex align-items-center justify-content-center"><strong>Painel Checklist</strong></h2>
+  <mat-card-content  class="d-flex align-items-center justify-content-center gap-1 ">
+    <div class="painel1">
+      <button class="button-32" routerLink="checklist/introducao">Introdução</button>
+      <button class="button-32" [routerLink]="['controle-de-acesso']">Controle de Acesso</button>
+      <button class="button-32" routerLink="checklist/dados-armazenados">Dados Armazenados</button>
+      <button class="button-32" routerLink="checklist/seguranca-nas-comunicacoes">Segurança nas Comunicações</button>
+      <button class="button-32" routerLink="checklist/gerenciamento-de-vulnerabilidade">Gerenciamento de Vulnerabilidade</button>
+      <button class="button-32" routerLink="checklist/dispositivos-moveis">Dispositivos Móveis</button>
+      <button class="button-32" routerLink="checklist/servicos-em-nuvem">Serviços em Nuvem</button>
+      <button class="button-32" routerLink="checklist/cookies">Cookies</button>
+      <button class="button-32" routerLink="checklist/politica-de-seguranca-da-informacao">Política de Segurança da Informação</button>
+      <button class="button-32" routerLink="checklist/conscientizacao-e-treinamento">Conscientização e Treinamento</button>
+      <button class="button-32" routerLink="checklist/contratos">Contratos</button>
     </div>
-</div>
+  </mat-card-content>
+</mat-card>
+
