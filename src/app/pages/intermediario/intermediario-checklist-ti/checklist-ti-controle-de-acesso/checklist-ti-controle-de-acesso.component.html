@@ -1,51 +1,43 @@
-<mat-card>
+<div class="container">
+  <mat-card>
   <form (ngSubmit)="handleSubmit($event)">
-    <mat-card-header>
-      <mat-card-title>Controle de Acesso</mat-card-title>
-    </mat-card-header>
-    <mat-divider></mat-divider>
+      <mat-card-header>
+        <mat-card-title>Controle de Acesso</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
 
-    <div class="form-group" *ngFor="let question of control; let index = index">
-        <div class="radio-check">
-          <mat-card-content>{{ index + 1 }}. {{ question }}</mat-card-content>
-          <input
-            type="radio"
-            [id]="'radios1_' + index"
-            [name]="'radios_' + index"
-            [value]="true"
-            [checked]="checklist[index]"
-            (change)="handleCheck(index)"
-          />
-          <label for="{{'radios1_' + index}}">Sim</label>
-          <input
-            type="radio"
-            [id]="'radios2_' + index"
-            [name]="'radios_' + index"
-            [value]="false"
-            [checked]="!checklist[index]"
-            (change)="handleCheck(index)"
-          />
-          <label for="{{'radios2_' + index}}">Não</label>
-        </div>
-          <div class="input-file" *ngIf="checklist[index]">
+      <div class="form-group" *ngFor="let question of control; let index = index">
+          <div class="radio-check">
+            <mat-card-content>{{ index + 1 }}. {{ question }}</mat-card-content>
             <input
-              type="file"
-              [id]="'formFile_' + index"
-              label="Coloque as evidências"
-              (change)="handleFileChange(index, $event)"
+              type="radio"
+              [id]="'radios1_' + index"
+              [name]="'radios_' + index"
+              [value]="true"
+              [checked]="checklist[index]"
+              (change)="handleCheck(index)"
             />
+            <label for="{{'radios1_' + index}}">Sim</label>
+            <input
+              type="radio"
+              [id]="'radios2_' + index"
+              [name]="'radios_' + index"
+              [value]="false"
+              [checked]="!checklist[index]"
+              (change)="handleCheck(index)"
+            />
+            <label for="{{'radios2_' + index}}">Não</label>
           </div>
-
-          <div *ngIf="!checklist[index]">
-            <textarea
-              [id]="'textArea' + index"
-              label="Descreva o motivo"
-              rows="3"
-              (input)="handleTextChange(index, $event)"
-            >
-            </textarea>
-          </div>
-      </div>
-    <button type="submit" style="margin-top: 20px;">Enviar</button>
-  </form>
-</mat-card>
+            <div class="input-file" *ngIf="checklist[index]">
+              <input
+                type="file"
+                [id]="'formFile_' + index"
+                label="Coloque as evidências"
+                (change)="handleFileChange(index, $event)"
+              />
+            </div>
+        </div>
+      <button type="submit" style="margin-top: 20px;">Enviar</button>
+    </form>
+  </mat-card>
+</div>

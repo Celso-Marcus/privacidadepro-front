@@ -1,6 +1,7 @@
 mat-card {
   width: 100%;
   margin: 0 auto; /* Centraliza o card na página */
+  padding: 30px;
 }
 
 .radio-check{
@@ -32,5 +33,11 @@ mat-card {
 :host {
   display: block;
   overflow-y: auto;
-  max-height: 50rem;
+  max-height: 30rem;
+}
+
+@media (min-width: 1400px){
+  :host{
+    max-height: 40rem;
+  }
 }

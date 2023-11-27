@@ -11,7 +11,6 @@ export class ChecklistTiControleDeAcessoComponent {
   control = control;
   checklist: boolean[] = new Array(7).fill(false);
   fileValues: File[] = new Array(7).fill(null); // Array para armazenar valores de arquivo
-  textValues: string[] = new Array(7).fill(null); // Array para armazenar valores de texto
 
   constructor() {}
 
@@ -26,11 +25,6 @@ export class ChecklistTiControleDeAcessoComponent {
     }
   }
 
-  handleTextChange(index: number, event: Event) {
-    const inputElement = event.target as HTMLTextAreaElement;
-    this.textValues[index] = inputElement.value;
-  }
-
   handleSubmit(event: Event) {
     event.preventDefault();
 
@@ -38,7 +32,6 @@ export class ChecklistTiControleDeAcessoComponent {
     const dataToSend = {
       checklist: this.checklist,
       fileValues: this.fileValues,
-      textValues: this.textValues,
     };
 
     console.log(dataToSend);
