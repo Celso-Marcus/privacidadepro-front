@@ -1,40 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { control } from '../../../../core/constants/checklist';
-
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import {ControleAcessoDialogComponent} from '../../../components/dialogs/controle-acesso-dialog/controle-acesso-dialog.component';
+/**
+ * @title Dialog elements
+ */
 @Component({
   selector: 'app-checklist-ti-controle-de-acesso',
   templateUrl: './checklist-ti-controle-de-acesso.component.html',
   styleUrls: ['./checklist-ti-controle-de-acesso.component.scss'],
 })
 export class ChecklistTiControleDeAcessoComponent {
-  control = control;
-  checklist: boolean[] = new Array(7).fill(false);
-  fileValues: File[] = new Array(7).fill(null); // Array para armazenar valores de arquivo
+  @Input() control = control;
+  checked: boolean[] = new Array(7).fill(false);
+  noChecked: boolean[] = new Array(7).fill(false);
+  checklistForm: FormGroup;
 
-  constructor() {}
-
-  handleCheck(index: number) {
-    this.checklist[index] = !this.checklist[index];
+  constructor(private MatDialog: MatDialog,private formBuilder: FormBuilder) {
+    const formControls: any = {};
+    this.control.forEach((_, index) => {
+      formControls[`question${index}`] = control[index], Validators.required;
+      formControls[`sim${index}`] = [false];
+      formControls[`nao${index}`] = [false];
+    });
+    this.checklistForm = this.formBuilder.group(formControls);
   }
 
-  handleFileChange(index: number, event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-    if (inputElement.files && inputElement.files.length > 0) {
-      this.fileValues[index] = inputElement.files[0];
-    }
+  openDialog() {
+    this.MatDialog.open(ControleAcessoDialogComponent);
   }
 
-  handleSubmit(event: Event) {
-    event.preventDefault();
 
-    // Criar objeto para enviar para o backend
-    const dataToSend = {
-      checklist: this.checklist,
-      fileValues: this.fileValues,
-    };
-
-    console.log(dataToSend);
+  handleSubmit() {
+    const formData = this.checklistForm.value;
+    console.log(formData);
 
     // Aqui você pode enviar 'dataToSend' para o backend usando um serviço HTTP
     // Exemplo: this.http.post('sua_url_backend', dataToSend).subscribe(response => { ... });

@@ -1,43 +1,26 @@
+<!-- checklist-ti-controle-de-acesso.component.html -->
 <div class="container">
   <mat-card>
-  <form (ngSubmit)="handleSubmit($event)">
+    <form [formGroup]="checklistForm" (ngSubmit)="handleSubmit()">
       <mat-card-header>
-        <mat-card-title>Controle de Acesso</mat-card-title>
+        <mat-toolbar color="primary" class="d-flex align-items-center justify-content-center">
+          <mat-card-title>Controle de Acesso</mat-card-title>
+          <button style=" top: -2px; left: 13px;" mat-mini-fab color="primary" (click)="openDialog()">
+            <mat-icon>upload</mat-icon>
+          </button>
+        </mat-toolbar>
       </mat-card-header>
       <mat-divider></mat-divider>
-
-      <div class="form-group" *ngFor="let question of control; let index = index">
-          <div class="radio-check">
-            <mat-card-content>{{ index + 1 }}. {{ question }}</mat-card-content>
-            <input
-              type="radio"
-              [id]="'radios1_' + index"
-              [name]="'radios_' + index"
-              [value]="true"
-              [checked]="checklist[index]"
-              (change)="handleCheck(index)"
-            />
-            <label for="{{'radios1_' + index}}">Sim</label>
-            <input
-              type="radio"
-              [id]="'radios2_' + index"
-              [name]="'radios_' + index"
-              [value]="false"
-              [checked]="!checklist[index]"
-              (change)="handleCheck(index)"
-            />
-            <label for="{{'radios2_' + index}}">Não</label>
-          </div>
-            <div class="input-file" *ngIf="checklist[index]">
-              <input
-                type="file"
-                [id]="'formFile_' + index"
-                label="Coloque as evidências"
-                (change)="handleFileChange(index, $event)"
-              />
-            </div>
-        </div>
-      <button type="submit" style="margin-top: 20px;">Enviar</button>
+      <div *ngFor="let question of control; let index = index" class="form-group d-flex align-items-center justify-content">
+        <mat-card-content>{{ index + 1 }}. {{ question }}</mat-card-content>
+        <section class="d-flex">
+          <p><mat-checkbox formControlName="sim{{index}}">Sim</mat-checkbox></p>
+          <p><mat-checkbox formControlName="nao{{index}}">Não</mat-checkbox></p>
+        </section>
+      </div>
+      <div class="d-flex text-center align-items-center justify-content-center mt-4">
+        <button mat-raised-button color="primary" type="submit">Enviar</button>
+      </div>
     </form>
   </mat-card>
 </div>
