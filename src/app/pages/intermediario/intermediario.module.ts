@@ -23,7 +23,7 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     IntermediarioLiaComponent,
     IntermediarioRIPDComponent,
     IntermediarioTermoDeUsoComponent,
-    ChecklistTiControleDeAcessoComponent
+    ChecklistTiControleDeAcessoComponent,
   ],
   imports: [
     CommonModule,
