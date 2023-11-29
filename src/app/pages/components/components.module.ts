@@ -7,6 +7,9 @@ import { CoreModule } from 'src/app/core/core.module';
 import { PerfilComponent } from './perfil/perfil.component';
 import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
 import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.component';
+import { MaterialModule } from 'src/app/shared/material/material.module';
+import { ControleAcessoDialogComponent } from './dialogs/controle-acesso-dialog/controle-acesso-dialog.component';
+import { EditControleAcessoDialogComponent } from './dialogs/controle-acesso-dialog/edit-controle-acesso-dialog/edit-controle-acesso-dialog.component';
 
 
 
@@ -17,18 +20,21 @@ import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.compon
     PerfilComponent,
     ConfirmDialogComponent,
     ErrorDialogComponent,
-
+    ControleAcessoDialogComponent,
+    EditControleAcessoDialogComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    MaterialModule,
   ],
   exports: [
     HeaderComponent,
     LayoutComponent,
     ConfirmDialogComponent,
     ErrorDialogComponent,
+    ControleAcessoDialogComponent
   ]
 })
 export class ComponentsModule { }
