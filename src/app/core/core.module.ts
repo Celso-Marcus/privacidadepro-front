@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { QuizService } from './services/http/quiz.service';
 import { HttpClientModule } from '@angular/common/http';
 import { InventoryService } from './services/http/inventory.service';
+import { LiaService } from './services/http/lia.service';
 
 
 
@@ -15,7 +16,8 @@ import { InventoryService } from './services/http/inventory.service';
   ],
   providers: [
     QuizService,
-    InventoryService
+    InventoryService,
+    LiaService
   ]
 })
 export class CoreModule { }

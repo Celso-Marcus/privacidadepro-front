@@ -12,6 +12,7 @@ import { IntermediarioRIPDComponent } from './intermediario-ripd/intermediario-r
 import { IntermediarioTermoDeUsoComponent } from './intermediario-termo-de-uso/intermediario-termo-de-uso.component'
 import { ChecklistTiControleDeAcessoComponent } from './intermediario-checklist-ti/checklist-ti-controle-de-acesso/checklist-ti-controle-de-acesso.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
+import { LIACriarEditarComponent } from './intermediario-lia/lia-criar-editar/lia-criar-editar.component';
 
 
 
@@ -24,6 +25,7 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     IntermediarioRIPDComponent,
     IntermediarioTermoDeUsoComponent,
     ChecklistTiControleDeAcessoComponent,
+    LIACriarEditarComponent
   ],
   imports: [
     CommonModule,

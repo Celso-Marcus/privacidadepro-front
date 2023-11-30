@@ -1,0 +1,178 @@
+<form class="form" [formGroup]="form">
+  <!-- step 1 -->
+  <ng-container *ngIf="step == 1">
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>Inventário</mat-label>
+      <ng-container *ngIf="liaCreation; else elseTemplate">
+        <mat-select formControlName="inventoryName">
+          <mat-option *ngFor="let item of inventoriesLI" [value]="item.tagName">
+            {{item.tagName}}
+          </mat-option>
+        </mat-select>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <input matInput [readonly]="true" [value]="lia?.inventoryName">
+      </ng-template>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>Encarregado(DPO)</mat-label>
+      <input matInput formControlName="dpoName" required>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>Quais são os impactos da não realização dos
+        tratamentos?</mat-label>
+      <input matInput formControlName="justification" required>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label> Há medidas de segurança adotadas para proteger os dados pessoais?</mat-label>
+      <mat-select formControlName="13" required>
+        <mat-option [value]="'Sim'">Sim</mat-option>
+        <mat-option [value]="'Não'">Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="goNext()">
+      Próximo
+    </button>
+  </ng-container>
+
+  <!-- step 2 -->
+  <ng-container *ngIf="step == 2">
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>Há terceiros beneficiados pelo tratamento?</mat-label>
+      <mat-select formControlName="1" required>
+        <mat-option [value]="'Sim'"> Sim </mat-option>
+        <mat-option [value]="'Não'"> Não </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>No que diz respeito a este processo de negócio, o controlador segue a
+        legislação de proteção de dados pessoais?</mat-label>
+      <mat-select formControlName="2" required>
+        <mat-option [value]="'Sim'"> Sim </mat-option>
+        <mat-option [value]="'Não'"> Não </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>O tratamento envolve dados sensíveis?</mat-label>
+      <mat-select formControlName="3" required>
+        <mat-option [value]="'Sim'"> Sim </mat-option>
+        <mat-option [value]="'Não'"> Não </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>O controlador segue as leis aplicáveis a esta atividade?</mat-label>
+      <mat-select formControlName="4" required>
+        <mat-option [value]="'Sim'"> Sim </mat-option>
+        <mat-option [value]="'Não'"> Não </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div>
+      <button style="margin-right: 10px" mat-raised-button color="primary" (click)="goBack()">
+        Voltar
+      </button>
+      <button mat-raised-button color="primary" (click)="goNext()">
+        Próximo
+      </button>
+    </div>
+  </ng-container>
+
+  <!-- step 3 -->
+  <ng-container *ngIf="step == 3">
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>O tratamento auxiliará o controlador a atingir seus
+        objetivos?</mat-label>
+      <mat-select formControlName="5" required>
+        <mat-option [value]="'Sim'"> Sim </mat-option>
+        <mat-option [value]="'Não'"> Não </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>O tratamento é proporcional aos objetivos pretendidos?</mat-label>
+      <mat-select formControlName="6" required>
+        <mat-option [value]="'Sim'"> Sim </mat-option>
+        <mat-option [value]="'Não'"> Não </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>É possível atingir os mesmos objetivos sem o tratamento?</mat-label>
+      <mat-select formControlName="7" required>
+        <mat-option [value]="'Sim'"> Sim </mat-option>
+        <mat-option [value]="'Não'"> Não </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>É possível atingir os mesmos objetivos utilizando menos dados ou
+        tratando dados de uma forma intrusiva?</mat-label>
+      <mat-select formControlName="8" required>
+        <mat-option [value]="'Sim'"> Sim </mat-option>
+        <mat-option [value]="'Não'"> Não </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div>
+      <button style="margin-right: 10px" mat-raised-button color="primary" (click)="goBack()">
+        Voltar
+      </button>
+      <button mat-raised-button color="primary" (click)="goNext()">
+        Próximo
+      </button>
+    </div>
+  </ng-container>
+
+  <!-- step 4 -->
+  <ng-container *ngIf="step == 4">
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>Há possíveis impactos do tratamento aos titulares?</mat-label>
+      <mat-select formControlName="9" required>
+        <mat-option [value]="'Sim'">Sim</mat-option>
+        <mat-option [value]="'Não'">Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>Há probabilidade e severidade de um eventual impacto
+        negativo?</mat-label>
+      <mat-select formControlName="10" required>
+        <mat-option [value]="'Sim'">Sim</mat-option>
+        <mat-option [value]="'Não'">Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>Há informações sobre o controle dos titulares sobre seus
+        dados?</mat-label>
+      <mat-select formControlName="11" required>
+        <mat-option [value]="'Sim'">Sim</mat-option>
+        <mat-option [value]="'Não'">Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>É provável que os titulares se oponham ao tratamento ou que achem-no
+        intruso?</mat-label>
+      <mat-select formControlName="12" required>
+        <mat-option [value]="'Sim'">Sim</mat-option>
+        <mat-option [value]="'Não'">Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div>
+      <button style="margin-right: 10px" mat-raised-button color="primary" (click)="goBack()">
+        Voltar
+      </button>
+      <button mat-raised-button color="primary" (click)="submit()">Salvar</button>
+    </div>
+  </ng-container>
+</form>
