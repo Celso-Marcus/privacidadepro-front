@@ -9,7 +9,7 @@ import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.
 import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { ControleAcessoDialogComponent } from './dialogs/controle-acesso-dialog/controle-acesso-dialog.component';
-import { EditControleAcessoDialogComponent } from './dialogs/controle-acesso-dialog/edit-controle-acesso-dialog/edit-controle-acesso-dialog.component';
+import { EditDialogComponent } from './dialogs/edit-dialog/edit-dialog.component';
 
 
 
@@ -21,7 +21,7 @@ import { EditControleAcessoDialogComponent } from './dialogs/controle-acesso-dia
     ConfirmDialogComponent,
     ErrorDialogComponent,
     ControleAcessoDialogComponent,
-    EditControleAcessoDialogComponent
+    EditDialogComponent
   ],
   imports: [
     CommonModule,
