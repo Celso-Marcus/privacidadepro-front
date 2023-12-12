@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { control } from '../../../../core/constants/checklist';
-import { EditControleAcessoDialogComponent } from './edit-controle-acesso-dialog/edit-controle-acesso-dialog.component';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 export interface PeriodicElement {
   id: number;
@@ -31,8 +31,9 @@ export class ControleAcessoDialogComponent {
   controlList = control;
   @ViewChild(MatTable) table: MatTable<PeriodicElement[]> | undefined;
 
+
   constructor(
-    public dialogRef: MatDialogRef<ControleAcessoDialogComponent>,public dialog: MatDialog
+    public dialogRef: MatDialogRef<ControleAcessoDialogComponent>,public dialog: MatDialog,
   ) {
     this.controlList.forEach(() => {
       this.dataSource.push([...ELEMENT_DATA]);
@@ -40,8 +41,16 @@ export class ControleAcessoDialogComponent {
   }
 
   openDialog() {
-    this.dialog.open(EditControleAcessoDialogComponent);
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      data: { title: 'Adicionar Arquivos' }, // You can pass data to EditDialogComponent
+    });
+    dialogRef.componentInstance.sendData.subscribe((fileData: any) => {
+      console.log('File data received from child dialog:', fileData);
+      // Lógica para enviar ou atualizar arquivos vai aqui
+      // Você pode enviar fileData para a sua API para processamento
+    });
   }
+
 
   removeData() {
     this.dataSource.pop();
