@@ -14,8 +14,6 @@ import { ChecklistTiControleDeAcessoComponent } from './intermediario-checklist-
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { LIACriarEditarComponent } from './intermediario-lia/lia-criar-editar/lia-criar-editar.component';
 
-
-
 @NgModule({
   declarations: [
     IntermediarioChecklistTiComponent,

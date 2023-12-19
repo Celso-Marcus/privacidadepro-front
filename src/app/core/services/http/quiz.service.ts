@@ -15,11 +15,6 @@ export class QuizService {
     private readonly http: HttpClient
   ) { }
 
-  //: Promise<Quiz[]>
-  // getAll(){
-  //   return firstValueFrom(this.http.get<Quiz[]>(`${this.API_ROUTE}/${userId}`));
-  // }
-
   getAll(): Promise<Quiz[]> {
     return firstValueFrom(this.http.get<Quiz[]>(`${this.API_ROUTE}`));
   }

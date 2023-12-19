@@ -22,7 +22,7 @@
           <tbody>
             <tr *ngFor="let quiz of quizzes">
               <td>{{ quiz.result }}</td>
-              <td>{{ quiz.createdAt | date }}</td>
+              <td>{{ quiz.createdAt | date: 'dd/MM/yyyy' }}</td>
               <td>{{ quiz.dpoName }}</td>
             </tr>
           </tbody>

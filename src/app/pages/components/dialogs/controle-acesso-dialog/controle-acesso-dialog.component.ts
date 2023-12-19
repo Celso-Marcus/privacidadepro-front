@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { control } from '../../../../core/constants/checklist';
-import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { EditDialogComponent } from '../../../inicial/inicial-entrevistas/entrevistas-dialog/edit-dialog.component';
 
 export interface PeriodicElement {
   id: number;

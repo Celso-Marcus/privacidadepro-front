@@ -9,7 +9,8 @@ import { InicialInventarioComponent } from './inicial-inventario/inicial-inventa
 import { InventarioCriarEditarComponent } from './inicial-inventario/inventario-criar-editar/inventario-criar-editar.component';
 import { InicialCriarQuizLpgdComponent } from './inicial-quiz-lpgd/inicial-criar-quiz-lpgd/inicial-criar-quiz-lpgd.component';
 import { FormsModule } from '@angular/forms';
-import { InicialEvidenciasComponent } from './inicial-evidencias/inicial-evidencias.component';
+import { InicialEvidenciasComponent } from './inicial-entrevistas/inicial-evidencias.component';
+import { EditDialogComponent } from './inicial-entrevistas/entrevistas-dialog/edit-dialog.component';
 
 
 
@@ -20,6 +21,7 @@ import { InicialEvidenciasComponent } from './inicial-evidencias/inicial-evidenc
     InventarioCriarEditarComponent,
     InicialCriarQuizLpgdComponent,
     InicialEvidenciasComponent,
+    EditDialogComponent
   ],
   imports: [
     CommonModule,
