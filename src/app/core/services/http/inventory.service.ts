@@ -27,7 +27,7 @@ export class InventoryService {
     return firstValueFrom(this.http.patch<Inventory>(`${this.API_ROUTE}/${id}`, inventory));
   }
 
-  delete(id: string): Promise<void> {
+  delete(id: number): Promise<void> {
     return firstValueFrom(this.http.delete<void>(`${this.API_ROUTE}/${id}`));
   }
 }

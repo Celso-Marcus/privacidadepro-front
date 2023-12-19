@@ -4,6 +4,8 @@ import { QuizService } from './services/http/quiz.service';
 import { HttpClientModule } from '@angular/common/http';
 import { InventoryService } from './services/http/inventory.service';
 import { LiaService } from './services/http/lia.service';
+import { InterviewService } from './services/http/interview.service';
+import { PdfService } from './services/http/pdf.service';
 
 
 
@@ -17,7 +19,9 @@ import { LiaService } from './services/http/lia.service';
   providers: [
     QuizService,
     InventoryService,
-    LiaService
+    LiaService,
+    InterviewService,
+    PdfService
   ]
 })
 export class CoreModule { }

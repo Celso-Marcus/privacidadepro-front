@@ -69,6 +69,29 @@
   <!-- step 3 -->
   <ng-container *ngIf="step == 3">
     <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>Operadores</mat-label>
+      <input matInput formControlName="operators" required>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>Controlador</mat-label>
+      <input matInput formControlName="controller" required>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>Encarregado(DPO)</mat-label>
+      <input matInput formControlName="dpoName" required>
+    </mat-form-field>
+
+    <div>
+      <button style="margin-right: 10px;" mat-raised-button color="primary" (click)="goBack()">Voltar</button>
+      <button mat-raised-button color="primary" (click)="goNext()">Próximo</button>
+    </div>
+  </ng-container>
+
+  <!-- step 4 -->
+  <ng-container *ngIf="step == 4">
+    <mat-form-field [floatLabel]="this.floatLabelControl">
       <mat-label>Eliminação dos dados</mat-label>
       <input matInput formControlName="deadlineData" required>
     </mat-form-field>
@@ -84,8 +107,8 @@
     </mat-form-field>
 
     <mat-form-field [floatLabel]="this.floatLabelControl">
-      <mat-label>Responsável pelos dados</mat-label>
-      <input matInput formControlName="controller" required>
+      <mat-label>Sistemas Usados</mat-label>
+      <input matInput formControlName="systemNames" required>
     </mat-form-field>
 
     <div>

@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { REASON_DATA } from 'src/app/core/constants/inventory';
 import { Inventory } from 'src/app/core/interfaces/inventory.interface';
 import { InventoryService } from 'src/app/core/services/http/inventory.service';
+import * as underscore from 'underscore';
 
 @Component({
   selector: 'app-inventario-criar-editar',
@@ -43,6 +44,9 @@ export class InventarioCriarEditarComponent implements OnInit {
     deadlineData: ['', [Validators.required]],
     justificationData: ['', [Validators.required]],
     underAgeData: [false, [Validators.required]],
+    operators: ['', [Validators.required]],
+    systemNames: ['', [Validators.required]],
+    dpoName: ['', [Validators.required]],
     sensitiveData: [''],
     controller: ['', [Validators.required]],
   }
@@ -75,6 +79,9 @@ export class InventarioCriarEditarComponent implements OnInit {
       justificationData: inventory.justificationData,
       underAgeData: inventory.underAgeData,
       sensitiveData: inventory.sensitiveData,
+      operators: inventory.operators.join(','),
+      systemNames: inventory.systemNames.join(','),
+      dpoName: inventory.dpoName,
       controller: inventory.controller,
     })
   }
@@ -86,12 +93,16 @@ export class InventarioCriarEditarComponent implements OnInit {
   }
 
   goNext() {
-    if (this.step < 3) {
+    if (this.step < 4) {
       this.step++;
     }
   }
 
   async submit() {
+    const formValue = underscore.clone(this.form.value);
+    formValue.operators = formValue.operators.split(',');
+    formValue.systemNames = formValue.systemNames.split(',');
+
     if (!this.form.valid) {
       this._snackbar.open('Preencha todos os campos.', 'OK', {
         duration: 5000
@@ -101,8 +112,8 @@ export class InventarioCriarEditarComponent implements OnInit {
 
     try {
       this.inventoryCreation ?
-        await this.inventoryService.create(this.form.value) :
-        await this.inventoryService.update(this.inventoryId, this.form.value);
+        await this.inventoryService.create(formValue) :
+        await this.inventoryService.update(this.inventoryId, formValue);
         this._snackbar.open('Inventário salvo com sucesso.', 'OK', {
           duration: 5000
         });

@@ -20,7 +20,7 @@ export class LiaService {
     return firstValueFrom(this.http.get<LIA[]>(`${this.API_ROUTE}`));
   }
 
-  getInventoriesLI(){
+  getInventoriesLIA(){
     return firstValueFrom(this.http.get<Inventory[]>(`${this.API_ROUTE}/inventories`));
   }
 

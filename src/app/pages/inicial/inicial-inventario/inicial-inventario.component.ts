@@ -10,6 +10,7 @@ import { InventoryService } from 'src/app/core/services/http/inventory.service';
 import { ErrorDialogComponent } from '../../components/dialogs/error-dialog/error-dialog.component';
 import { ConfirmDialogComponent } from '../../components/dialogs/confirm-dialog/confirm-dialog.component';
 import { firstValueFrom } from 'rxjs';
+import { PdfService } from 'src/app/core/services/http/pdf.service';
 
 @Component({
   selector: 'app-inicial-inventario',
@@ -18,7 +19,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class InicialInventarioComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'tagName', 'sector', 'createdAt', 'edit', 'delete'];
+  displayedColumns: string[] = ['tagName', 'sector', 'createdAt', 'edit', 'delete', 'download'];
 
   inventory: Inventory | undefined;
   inventoryForm = false;
@@ -34,7 +35,8 @@ export class InicialInventarioComponent implements OnInit {
     private _snackbar: MatSnackBar,
     private _liveAnnouncer: LiveAnnouncer,
     private readonly inventoryService: InventoryService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private pdfService: PdfService
   ) {
   }
 
@@ -44,32 +46,6 @@ export class InicialInventarioComponent implements OnInit {
     this.inventoryData = new MatTableDataSource<Inventory>(result);
     this.inventoryData.paginator = this.paginator;
   }
-
-  // private generateRandomString() {
-  //   let result = '';
-  //   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-  //   for (let i = 0; i < 5; i++) {
-  //     const randomIndex = Math.floor(Math.random() * characters.length);
-  //     result += characters.charAt(randomIndex);
-  //   }
-
-  //   return result;
-  // }
-
-  // announceSortChange(event: any) {
-  //   const sortState: Sort = event;
-  //   console.log(sortState)
-  //   // This example uses English messages. If your application supports
-  //   // multiple language, you would internationalize these strings.
-  //   // Furthermore, you can customize the message to add additional
-  //   // details about the values being sorted.
-  //   if (sortState.direction) {
-  //     this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-  //   } else {
-  //     this._liveAnnouncer.announce('Sorting cleared');
-  //   }
-  // }
 
   viewList() {
     this.inventoryForm = false;
@@ -104,6 +80,22 @@ export class InicialInventarioComponent implements OnInit {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMessage
     })
+  }
+
+  download(inventory: Inventory) {
+    try {
+      this.pdfService.getInventoryPDF(inventory.id).subscribe(
+        (response) => {
+          const blob = new Blob([response], { type: 'application/pdf' });
+          const url = window.URL.createObjectURL(blob);
+          window.open(url);
+        }
+      );
+    }
+    catch (error) {
+      console.error(error);
+      this.onError("Não foi possível baixar o PDF");
+    }
   }
 
 }

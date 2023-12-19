@@ -1,5 +1,5 @@
 export interface Inventory {
-  id: string;
+  id: number;
   tagName: string;
   sector: string;
   collectedData: string;
@@ -12,7 +12,11 @@ export interface Inventory {
   underAgeData: boolean;
   sensitiveData: string;
   controller: string;
+  operators: string[];
+  systemNames: string[];
+  dpoName: string;
   createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface CreateInventory {

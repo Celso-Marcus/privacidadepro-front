@@ -63,7 +63,7 @@ export class LIACriarEditarComponent implements OnInit {
   async ngOnInit() {
     this.form = this.formBuilder.group(this.initialForm);
     if(this.liaCreation){
-      this.inventoriesLI = (await this.liaService.getInventoriesLI());
+      this.inventoriesLI = (await this.liaService.getInventoriesLIA());
     }
     if(!this.liaCreation && this.lia){
       this.liaId = Number(this.lia.id);
