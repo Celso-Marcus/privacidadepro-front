@@ -6,11 +6,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Inventory } from 'src/app/core/interfaces/inventory.interface';
-import { InventoryService } from 'src/app/core/services/http/inventory.service';
 import { ErrorDialogComponent } from '../../components/dialogs/error-dialog/error-dialog.component';
 import { ConfirmDialogComponent } from '../../components/dialogs/confirm-dialog/confirm-dialog.component';
 import { firstValueFrom } from 'rxjs';
-import { PdfService } from 'src/app/core/services/http/pdf.service';
+import { CrudService } from 'src/app/core/services/http/crud.service';
 
 @Component({
   selector: 'app-inicial-inventario',
@@ -34,17 +33,26 @@ export class InicialInventarioComponent implements OnInit {
     private readonly router: Router,
     private _snackbar: MatSnackBar,
     private _liveAnnouncer: LiveAnnouncer,
-    private readonly inventoryService: InventoryService,
     public dialog: MatDialog,
-    private pdfService: PdfService
+    private crudService: CrudService<Inventory>
   ) {
   }
 
   async ngOnInit() {
-    const result = await this.inventoryService.getAll();
-    this.inventorySize = result.length;
-    this.inventoryData = new MatTableDataSource<Inventory>(result);
-    this.inventoryData.paginator = this.paginator;
+    try {
+      const result = await this.crudService.getAll('inventory').toPromise();
+      if (result) {
+        this.inventorySize = result.length;
+        this.inventoryData = new MatTableDataSource<Inventory>(result);
+        this.inventoryData.paginator = this.paginator;
+      } else {
+        console.error("Erro ao obter dados do inventário: resultado indefinido");
+        this.onError("Erro ao obter dados do inventário");
+      }
+    } catch (error) {
+      console.error(error);
+      this.onError("Erro ao obter dados do inventário");
+    }
   }
 
   viewList() {
@@ -66,35 +74,43 @@ export class InicialInventarioComponent implements OnInit {
 
   async delete(inventory: Inventory) {
     try {
-      const result = await firstValueFrom(this.dialog.open(ConfirmDialogComponent, { data: "Você quer deletar esse item?" }).afterClosed());
-      if(result){
-        await this.inventoryService.delete(inventory.id);
+      const result = await firstValueFrom(
+        this.dialog
+          .open(ConfirmDialogComponent, { data: "Você quer deletar esse item?" })
+          .afterClosed()
+      );
+      if (result) {
+        await this.crudService.delete('inventory', inventory.id).toPromise();
+        this._snackbar.open("Item deletado com sucesso", "Fechar", {
+          duration: 5000
+        });
+        location.reload();
       }
     } catch (error) {
       console.error(error);
-      this.onError("Não foi possível deletar o item");
+      this.onError("Não foi possível deletar o item");
     }
   }
+
 
   onError(errorMessage: string) {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMessage
-    })
+    });
   }
 
   download(inventory: Inventory) {
     try {
-      this.pdfService.getInventoryPDF(inventory.id).subscribe(
+      this.crudService.download('pdf/inventory',inventory.id).subscribe(
         (response) => {
           const blob = new Blob([response], { type: 'application/pdf' });
           const url = window.URL.createObjectURL(blob);
           window.open(url);
         }
       );
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
-      this.onError("Não foi possível baixar o PDF");
+      this.onError("Não foi possível baixar o PDF");
     }
   }
 
