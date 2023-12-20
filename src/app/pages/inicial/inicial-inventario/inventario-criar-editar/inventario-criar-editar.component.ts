@@ -44,6 +44,8 @@ export class InventarioCriarEditarComponent implements OnInit {
     deadlineData: ['', [Validators.required]],
     justificationData: ['', [Validators.required]],
     underAgeData: [false, [Validators.required]],
+    foreignData: ['Nenhum', [Validators.required]],
+    shareData: ['Nenhum', [Validators.required]],
     operators: ['', [Validators.required]],
     systemNames: ['', [Validators.required]],
     dpoName: ['', [Validators.required]],
@@ -79,6 +81,8 @@ export class InventarioCriarEditarComponent implements OnInit {
       justificationData: inventory.justificationData,
       underAgeData: inventory.underAgeData,
       sensitiveData: inventory.sensitiveData,
+      foreignData: inventory.foreignData,
+      shareData: inventory.shareData,
       operators: inventory.operators.join(','),
       systemNames: inventory.systemNames.join(','),
       dpoName: inventory.dpoName,
@@ -93,7 +97,7 @@ export class InventarioCriarEditarComponent implements OnInit {
   }
 
   goNext() {
-    if (this.step < 4) {
+    if (this.step < 5) {
       this.step++;
     }
   }

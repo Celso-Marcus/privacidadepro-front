@@ -1,7 +1,7 @@
+import { CrudService } from './../../../core/services/http/crud.service';
 import { Component, OnInit } from '@angular/core';
 import { EditDialogComponent } from './entrevistas-dialog/edit-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { InterviewService } from 'src/app/core/services/http/interview.service';
 import { Interview } from 'src/app/core/interfaces/interview.interface';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from '../../components/dialogs/confirm-dialog/confirm-dialog.component';
@@ -20,17 +20,23 @@ export class InicialEvidenciasComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private interviewService: InterviewService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private crudService: CrudService<Interview>
     ){}
 
   ngOnInit() {
     this.getData();
   }
 
-  async getData(){
-    const result = await this.interviewService.getAll();
-    this.dataSource = new MatTableDataSource<Interview>(result);
+  async getData() {
+    try {
+      this.crudService.getAll('interview')
+        .subscribe((result: Interview[]) => {
+          this.dataSource = new MatTableDataSource<Interview>(result);
+        });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   openDialog() {
@@ -43,24 +49,27 @@ export class InicialEvidenciasComponent implements OnInit {
     });
   }
 
-  download(element: any) {
-    this.interviewService.download(element.filePath)
+  download(element: Interview) {
+    this.crudService.download('interview', element.filePath)
     .subscribe((response) => {
       const blob = new Blob([response], { type: 'audio/mp3' });
       const url = window.URL.createObjectURL(blob);
       window.open(url);
+    }, (error) => {
+      console.error(error);
     });
   }
 
-  async delete(element: any) {
+  async delete(element: Interview) {
     try {
       const result = await firstValueFrom(this.dialog.open(ConfirmDialogComponent,
         { data: "Tem certeza que deseja deletar essa entrevista?" }).afterClosed());
       if(result){
-        await this.interviewService.delete(element.id);
+        await this.crudService.delete('interview',element.id).toPromise();
         this.getData();
         this.snackbar.open('Entrevista deletada com sucesso.', 'Fechar',
         { duration: 5000 });
+        location.reload();
       }
     } catch (error) {
       console.error(error);
