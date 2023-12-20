@@ -8,7 +8,8 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
 import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
-import { ControleAcessoDialogComponent } from './dialogs/controle-acesso-dialog/controle-acesso-dialog.component';
+import { ChecklistEvidenceUpload } from '../intermediario/intermediario-checklist-ti/dialog/evidencias-upload/upload-evidencias.component';
+import { UploadFileDialogComponent } from '../inicial/inicial-entrevistas/upload-dialog/upload-dialog.component';
 
 
 
@@ -19,7 +20,7 @@ import { ControleAcessoDialogComponent } from './dialogs/controle-acesso-dialog/
     PerfilComponent,
     ConfirmDialogComponent,
     ErrorDialogComponent,
-    ControleAcessoDialogComponent,
+    ChecklistEvidenceUpload,
   ],
   imports: [
     CommonModule,
@@ -32,7 +33,7 @@ import { ControleAcessoDialogComponent } from './dialogs/controle-acesso-dialog/
     LayoutComponent,
     ConfirmDialogComponent,
     ErrorDialogComponent,
-    ControleAcessoDialogComponent
+    ChecklistEvidenceUpload,
   ]
 })
 export class ComponentsModule { }

@@ -1,0 +1,11 @@
+<mat-toolbar class="d-flex justify-content-center" color="primary">
+  <h1 mat-dialog-title class="text-white">Upload de Evidencias</h1>
+</mat-toolbar>
+<div mat-dialog-content class="d-flex flex-column justify-content-center">
+  <input type="file" name="file" [multiple]="true" (change)="onFileSelected($event)">
+</div>
+<div mat-dialog-actions class="d-flex justify-content-center">
+  <button mat-button color="primary" (click)="submit()">Enviar</button>
+  <button mat-button color="warn" (click)="close()">Fechar</button>
+</div>
+

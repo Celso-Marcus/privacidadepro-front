@@ -1,14 +1,14 @@
-import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { InterviewService } from 'src/app/core/services/http/interview.service';
 
 @Component({
-  selector: 'app-edit-dialog',
-  templateUrl: './edit-dialog.component.html',
-  styleUrls: ['./edit-dialog.component.scss']
+  selector: 'app-upload-dialog',
+  templateUrl: './upload-dialog.component.html',
+  styleUrls: ['./upload-dialog.component.scss']
 })
-export class EditDialogComponent {
+export class UploadFileDialogComponent implements OnInit{
   @Input() title?: string;
   @Output() closeDialog: EventEmitter<void> = new EventEmitter<void>();
   @Output() sendData: EventEmitter<any> = new EventEmitter<any>();
@@ -19,11 +19,14 @@ export class EditDialogComponent {
   FORMATS_ALLOWED: string[] = ['mp3', 'm4a', 'wav', 'ogg'];
 
   constructor(
-    private dialogRef: MatDialogRef<EditDialogComponent>,
+    private dialogRef: MatDialogRef<UploadFileDialogComponent>,
     private snackbar: MatSnackBar,
     private interviewService: InterviewService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
+
+  ngOnInit(): void {
+  }
 
   close(): void {
     this.closeDialog.emit();

@@ -6,6 +6,7 @@ import { InventoryService } from './services/http/inventory.service';
 import { LiaService } from './services/http/lia.service';
 import { InterviewService } from './services/http/interview.service';
 import { PdfService } from './services/http/pdf.service';
+import { ChecklistService } from './services/http/checklist.service';
 
 
 
@@ -21,7 +22,8 @@ import { PdfService } from './services/http/pdf.service';
     InventoryService,
     LiaService,
     InterviewService,
-    PdfService
+    PdfService,
+    ChecklistService
   ]
 })
 export class CoreModule { }
