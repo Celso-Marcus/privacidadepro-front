@@ -1,4 +1,4 @@
-export const control = [
+export const ACCESS_CONTROL = [
   'Sistema de controle de acesso aplicável a todos usuários?',
   'Política de senhas de alta complexidade?',
   'Troca de senhas padrão de aplicativos e sistemas?',

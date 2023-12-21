@@ -1,0 +1,20 @@
+<div class="container">
+      <mat-toolbar class="d-flex align-items-center justify-content-center" style="background: none;">
+        <mat-card-title>{{checklist.category}}</mat-card-title>
+        <button style=" top: -2px; left: 13px;" mat-mini-fab color="primary" (click)="openDialog()">
+          <mat-icon>upload</mat-icon>
+        </button>
+        <button class="close-button" mat-icon-button color="warn" (click)="close()"><mat-icon>close</mat-icon></button>
+      </mat-toolbar>
+        <div class="w-100">
+          <mat-selection-list>
+            <mat-list-option *ngFor="let question of questions; let index = index"
+            [(selected)]="checked[index]">
+              {{ index + 1 }}. {{ question }}
+            </mat-list-option>
+          </mat-selection-list>
+        </div>
+      <div class="d-flex text-center align-items-center justify-content-center mt-4">
+        <button mat-raised-button color="primary" (click)="handleSubmit()">Salvar</button>
+      </div>
+</div>

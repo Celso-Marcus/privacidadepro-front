@@ -6,7 +6,6 @@ import { IntermediarioCookiesComponent } from './intermediario-cookies/intermedi
 import { IntermediarioLiaComponent } from './intermediario-lia/intermediario-lia.component'
 import { IntermediarioRIPDComponent } from './intermediario-ripd/intermediario-ripd.component'
 import { IntermediarioTermoDeUsoComponent } from './intermediario-termo-de-uso/intermediario-termo-de-uso.component'
-import { ChecklistTiControleDeAcessoComponent } from './intermediario-checklist-ti/checklist-ti-controle-de-acesso/checklist-ti-controle-de-acesso.component';
 
 const routes: Routes = [
   {
@@ -16,14 +15,6 @@ const routes: Routes = [
       {
         path: 'checklist-ti',
         component: IntermediarioChecklistTiComponent
-      },
-      {
-        path: 'checklist-ti/controle-de-acesso',
-        component: ChecklistTiControleDeAcessoComponent
-      },
-      {
-        path: 'cookies',
-        component: IntermediarioCookiesComponent
       },
       {
         path: 'lia',

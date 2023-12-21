@@ -1,18 +1,8 @@
 <mat-card class="d-flex justify-content-center align-items-center">
   <h2 class="text-center mt-3 d-flex align-items-center justify-content-center"><strong>Painel Checklist</strong></h2>
-  <mat-card-content  class="d-flex align-items-center justify-content-center gap-1 ">
-    <div class="painel1">
-      <button class="button-32" routerLink="checklist/introducao">Introdução</button>
-      <button class="button-32" [routerLink]="['controle-de-acesso']">Controle de Acesso</button>
-      <button class="button-32" routerLink="checklist/dados-armazenados">Dados Armazenados</button>
-      <button class="button-32" routerLink="checklist/seguranca-nas-comunicacoes">Segurança nas Comunicações</button>
-      <button class="button-32" routerLink="checklist/gerenciamento-de-vulnerabilidade">Gerenciamento de Vulnerabilidade</button>
-      <button class="button-32" routerLink="checklist/dispositivos-moveis">Dispositivos Móveis</button>
-      <button class="button-32" routerLink="checklist/servicos-em-nuvem">Serviços em Nuvem</button>
-      <button class="button-32" routerLink="checklist/cookies">Cookies</button>
-      <button class="button-32" routerLink="checklist/politica-de-seguranca-da-informacao">Política de Segurança da Informação</button>
-      <button class="button-32" routerLink="checklist/conscientizacao-e-treinamento">Conscientização e Treinamento</button>
-      <button class="button-32" routerLink="checklist/contratos">Contratos</button>
+  <mat-card-content  class="d-flex flex-column align-items-center justify-content-center gap-1 p-5">
+    <div class="painel1" *ngFor="let checklist of checklists">
+      <button class="button-32" (click)="openDialog(checklist)">{{checklist.category}}</button>
     </div>
   </mat-card-content>
 </mat-card>

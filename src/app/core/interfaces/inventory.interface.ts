@@ -11,6 +11,8 @@ export interface Inventory {
   justificationData: string;
   underAgeData: boolean;
   sensitiveData: string;
+  foreignData: string;
+  shareData: string;
   controller: string;
   operators: string[];
   systemNames: string[];

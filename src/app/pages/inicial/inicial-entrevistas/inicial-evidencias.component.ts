@@ -1,6 +1,6 @@
 import { CrudService } from './../../../core/services/http/crud.service';
 import { Component, OnInit } from '@angular/core';
-import { EditDialogComponent } from './entrevistas-dialog/edit-dialog.component';
+import { UploadFileDialogComponent } from './upload-dialog/upload-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Interview } from 'src/app/core/interfaces/interview.interface';
 import { MatTableDataSource } from '@angular/material/table';
@@ -40,7 +40,7 @@ export class InicialEvidenciasComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(EditDialogComponent, {
+    this.dialog.open(UploadFileDialogComponent, {
       data: { title: 'Adicionar Entrevista.' },
     }).afterClosed().subscribe((confirm) => {
       if (confirm) {

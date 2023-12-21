@@ -10,9 +10,10 @@ import { IntermediarioCookiesComponent } from './intermediario-cookies/intermedi
 import { IntermediarioLiaComponent } from './intermediario-lia/intermediario-lia.component'
 import { IntermediarioRIPDComponent } from './intermediario-ripd/intermediario-ripd.component'
 import { IntermediarioTermoDeUsoComponent } from './intermediario-termo-de-uso/intermediario-termo-de-uso.component'
-import { ChecklistTiControleDeAcessoComponent } from './intermediario-checklist-ti/checklist-ti-controle-de-acesso/checklist-ti-controle-de-acesso.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { LIACriarEditarComponent } from './intermediario-lia/lia-criar-editar/lia-criar-editar.component';
+import { ChecklistTiTopicComponent } from './intermediario-checklist-ti/dialog/checklist-ti/checklist-ti.component';
+import { UploadFileDialogComponent } from './intermediario-checklist-ti/dialog/upload-dialog/upload-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,9 @@ import { LIACriarEditarComponent } from './intermediario-lia/lia-criar-editar/li
     IntermediarioLiaComponent,
     IntermediarioRIPDComponent,
     IntermediarioTermoDeUsoComponent,
-    ChecklistTiControleDeAcessoComponent,
-    LIACriarEditarComponent
+    ChecklistTiTopicComponent,
+    LIACriarEditarComponent,
+    UploadFileDialogComponent
   ],
   imports: [
     CommonModule,
