@@ -1,4 +1,4 @@
-import { CrudService } from './../../../core/services/http/crud.service';
+import { CrudService } from '../../../core/services/http/crud.service';
 import { Component, OnInit } from '@angular/core';
 import { UploadFileDialogComponent } from './upload-dialog/upload-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,11 +9,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
-  selector: 'app-inicial-evidencias',
-  templateUrl: './inicial-evidencias.component.html',
-  styleUrls: ['./inicial-evidencias.component.scss']
+  selector: 'app-inicial-entrevistas',
+  templateUrl: './inicial-entrevistas.component.html',
+  styleUrls: ['./inicial-entrevistas.component.scss']
 })
-export class InicialEvidenciasComponent implements OnInit {
+export class InicialEntrevistasComponent implements OnInit {
 
   displayedColumns: string[] = ['createdAt','filePath', 'download', 'delete'];
   dataSource: any;

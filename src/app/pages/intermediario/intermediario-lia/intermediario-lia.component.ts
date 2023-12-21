@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { LiaService } from 'src/app/core/services/http/lia.service';
+import { PdfService } from 'src/app/core/services/http/pdf.service';
 
 @Component({
   selector: 'app-intermediario-lia',
@@ -33,6 +34,7 @@ export class IntermediarioLiaComponent {
     private _snackbar: MatSnackBar,
     private _liveAnnouncer: LiveAnnouncer,
     private liaService: LiaService,
+    private pdfService: PdfService,
     public dialog: MatDialog
   ) {
   }
@@ -66,7 +68,7 @@ export class IntermediarioLiaComponent {
   }
 
   dowload(lia: LIA) {
-    this.liaService.download(lia.id).subscribe(blob => {
+    this.pdfService.getLiaPDF(lia.id).subscribe(blob => {
       const objectUrl = URL.createObjectURL(blob)
       window.open(objectUrl, '_blank')
     });

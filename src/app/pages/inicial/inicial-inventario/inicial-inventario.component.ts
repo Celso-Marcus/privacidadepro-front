@@ -22,7 +22,7 @@ export class InicialInventarioComponent implements OnInit {
 
   inventory: Inventory | undefined;
   inventoryForm = false;
-  inventoryCreation = false;
+  isCreate = false;
 
   inventoryData!: MatTableDataSource<Inventory>;
   inventorySize = 0;
@@ -57,18 +57,18 @@ export class InicialInventarioComponent implements OnInit {
 
   viewList() {
     this.inventoryForm = false;
-    this.inventoryCreation = false;
+    this.isCreate = false;
     location.reload();
   }
 
   create() {
     this.inventoryForm = true;
-    this.inventoryCreation = true;
+    this.isCreate = true;
   }
 
   edit(inventory: Inventory) {
     this.inventoryForm = true;
-    this.inventoryCreation = false;
+    this.isCreate = false;
     this.inventory = inventory;
   }
 

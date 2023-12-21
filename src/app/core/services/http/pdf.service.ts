@@ -15,4 +15,8 @@ export class PdfService {
   getInventoryPDF(id: number) {
     return this.http.get(`${this.API_ROUTE}/inventory/${id}`, { responseType: 'blob' });
   }
+
+  getLiaPDF(id: number) {
+    return this.http.get(`${this.API_ROUTE}/lia/${id}`, { responseType: 'blob' });
+  }
 }
