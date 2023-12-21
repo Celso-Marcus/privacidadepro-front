@@ -15,7 +15,7 @@ import * as underscore from 'underscore';
 export class InventarioCriarEditarComponent implements OnInit {
 
   @Input()
-  inventoryCreation!: boolean;
+  isCreate!: boolean;
 
   @Input()
   inventory: Inventory | undefined;
@@ -62,7 +62,7 @@ export class InventarioCriarEditarComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(this.initialForm);
-    if(!this.inventoryCreation && this.inventory){
+    if(!this.isCreate && this.inventory){
       this.inventoryId = Number(this.inventory.id);
       this.fillForm(this.inventory);
     }
@@ -115,7 +115,7 @@ export class InventarioCriarEditarComponent implements OnInit {
     }
 
     try {
-      this.inventoryCreation ?
+      this.isCreate ?
         await this.inventoryService.create(formValue) :
         await this.inventoryService.update(this.inventoryId, formValue);
         this._snackbar.open('Inventário salvo com sucesso.', 'OK', {
@@ -137,6 +137,10 @@ export class InventarioCriarEditarComponent implements OnInit {
   }
 
   private generateInventoryTagName(sectorName: number) {
-    return `${sectorName}-Inventário-${this.inventorySize}`
+    if(this.isCreate){
+      return `${sectorName}-Inventário-${this.inventorySize}`
+    }
+    const sizePart = this.inventory?.tagName.split('-')[2];
+    return `${sectorName}-Inventário-${sizePart}`
   }
 }

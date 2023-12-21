@@ -6,17 +6,12 @@ import { PerfilComponent } from './pages/components/perfil/perfil.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/fase/inicial',
+    redirectTo: '/fase/inicial/quiz-lgpd',
     pathMatch: 'full'
   },
   {
     path: 'home',
-    redirectTo: '/fase/inicial',
-    pathMatch: 'full'
-  },
-  {
-    path: 'perfil',
-    redirectTo: '/perfil',
+    redirectTo: '/fase/inicial/quiz-lgpd',
     pathMatch: 'full'
   },
   {
@@ -64,21 +59,6 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: '',
-    component: PerfilComponent ,
-    children: [
-      {
-        path: 'perfil',
-        children: [
-          {
-            path: 'inicial',
-            loadChildren: () => import('./pages/inicial/inicial.module').then(m => m.InicialModule)
-          },
-        ]
-      }
-    ]
-  }
 ];
 
 @NgModule({

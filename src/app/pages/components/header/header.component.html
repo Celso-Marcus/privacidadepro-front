@@ -10,15 +10,23 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <ul *ngFor="let module of modules" class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="dropdown-item" [routerLink]="['fase/inicial']">Inicial</a>
-          </li>
-          <li class="nav-item">
-            <a class="dropdown-item" [routerLink]="['fase/intermediaria']">Intermediária</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="dropdown-item" [routerLink]="['fase/avancada']">Avançada</a>
+            <mat-accordion>
+              <mat-expansion-panel class="expansion-panel" hideToggle>
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="expansion-panel-title">
+                    {{module.name}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ng-container *ngFor="let link of module.links">
+                  <a class="dropdown-item d-flex align-items-center"
+                    [routerLink]="link.routerLink">
+                    <mat-icon>chevron_right</mat-icon>{{link.label}}
+                  </a>
+                </ng-container>
+              </mat-expansion-panel>
+            </mat-accordion>
           </li>
         </ul>
       </div>

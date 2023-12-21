@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InicialComponent } from './inicial.component';
 import { InicialQuizLpgdComponent } from './inicial-quiz-lpgd/inicial-quiz-lpgd.component';
 import { InicialInventarioComponent } from './inicial-inventario/inicial-inventario.component';
-import { InicialEvidenciasComponent } from './inicial-entrevistas/inicial-evidencias.component';
+import { InicialEntrevistasComponent } from './inicial-entrevistas/inicial-entrevistas.component';
 
 const routes: Routes = [
   {
@@ -19,8 +19,8 @@ const routes: Routes = [
         component: InicialInventarioComponent
       },
       {
-        path: 'evidencias',
-        component: InicialEvidenciasComponent
+        path: 'entrevistas',
+        component: InicialEntrevistasComponent
       }
     ]
   }
