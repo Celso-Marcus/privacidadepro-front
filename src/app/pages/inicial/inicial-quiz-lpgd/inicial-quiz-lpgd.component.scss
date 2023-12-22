@@ -2,15 +2,6 @@
   overflow-x: hidden;
 }
 
-mat-card-content {
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-}
-
-table{
-  width: 50rem;
-}
-
 mat-form-field{
   width: 25vw;
 }
@@ -23,11 +14,17 @@ mat-form-field{
   gap: 1rem;
 }
 
-
+mat-card{
+  display: flex;
+  align-items: center;
+  background-color: #FFFF;
+  padding: 1px 25px;
+  border-radius: 2%;
+}
 .inicio-quiz {
   background-color: #646464;
   background-size: 400% 400%;
-  height: 200vh;
+  height: 250vh;
   width: 100vw;
 }
 mat-card-title {
@@ -45,5 +42,6 @@ mat-card-title {
 }
 
 .quiz-content{
-  border-radius: 1%;
+  width: 60vw;
+  height: 58vh;
 }

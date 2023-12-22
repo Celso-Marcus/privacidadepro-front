@@ -1,9 +1,9 @@
 <form [formGroup]="formulario">
   <ng-container *ngIf="step == 1">
-    <div class="card">
+    <div class="container-fluid card">
       <div class="card-body" >
-        <div style="background: none;" class="card-header">
-          <p style="font-size: 25px;" class="card-title">{{topics[0] }}</p>
+        <div class="card-header">
+          <p class="card-title">{{topics[0] }}</p>
         </div>
         <br><br>
           <div class="form-group">
@@ -47,7 +47,7 @@
         <br><br>
             <div class="form-group" *ngFor="let item of conformity; let index = index">
               <label for="qConformity{{index+1}}" >{{ index + 1 }} - {{ item }}</label>
-              <div  class="form-check form-check-inline">
+              <div  class="form-check  form-check-inline">
                 <input type="radio" id="qConformity{{index+1}}" name="qConformity{{index+1}}" value="0" (change)="answers[index+6] = 0" checked>
                 <label for="qConformity{{index+1}}">Ainda não</label>
                 <br>
@@ -223,7 +223,6 @@
           <div class="buts">
             <button mat-raised-button color="primary" (click)="goBack()">Voltar</button>
             <button mat-raised-button class="butsss" (click)="handleQuiz()">Salvar</button>
-            <button mat-raised-button color="warn" (click)="cancelQuiz()">Cancelar</button>
           </div>
       </div>
     </div>

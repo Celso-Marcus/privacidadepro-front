@@ -1,9 +1,10 @@
-import { Component, EventEmitter, HostListener, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { adequacy, conformity, government, security, topics, traceability, transparency, violations } from '../../../../core/constants/quizQuestions';
 import { QuizService } from '../../../../core/services/http/quiz.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Quiz } from 'src/app/core/interfaces/quiz.interface';
 
 @Component({
   selector: 'app-inicial-criar-quiz-lpgd',
@@ -11,8 +12,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./inicial-criar-quiz-lpgd.component.scss']
 })
 export class InicialCriarQuizLpgdComponent {
-  @Output() dontShow = new EventEmitter<void>();
-
+  @Input() quiz: Quiz | undefined;
+  @Input() quizSize: number | undefined;
+  @Input() isCreate!: boolean;
   step: number = 1;
 
   violations: string[] = violations;
@@ -50,10 +52,6 @@ export class InicialCriarQuizLpgdComponent {
     } else {
       return 'botao__desabilitado'
     }
-  }
-
-  cancelQuiz() {
-    this.dontShow.emit();// Altera a variável para mostrar o componente do Quiz
   }
 
   async handleQuiz() {
