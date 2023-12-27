@@ -8,7 +8,8 @@ import { AvancadoComponent } from './avancado.component'
 import { AvancadoComunicacaoTitularComponent } from './avancado-comunicacao-titular/avancado-comunicacao-titular.component'
 import { AvancadoIncidentesComponent } from './avancado-incidentes/avancado-incidentes.component'
 import { AvancadoPoliticaSegurancaComponent } from './avancado-politica-seguranca/avancado-politica-seguranca.component'
-import { AvancadoPrivacyByDesignComponent } from './avancado-privacy-by-design/avancado-privacy-by-design.component'
+import { AvancadoPrivacyByDesignComponent } from './avancado-privacy-by-design/avancado-privacy-by-design.component';
+import { AvancadoCriarIncidentesComponent } from './avancado-incidentes/avancado-criar-incidentes/avancado-criar-incidentes.component'
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AvancadoPrivacyByDesignComponent } from './avancado-privacy-by-design/a
     AvancadoComunicacaoTitularComponent,
     AvancadoIncidentesComponent,
     AvancadoPoliticaSegurancaComponent,
-    AvancadoPrivacyByDesignComponent
+    AvancadoPrivacyByDesignComponent,
+    AvancadoCriarIncidentesComponent
   ],
   imports: [
     CommonModule,

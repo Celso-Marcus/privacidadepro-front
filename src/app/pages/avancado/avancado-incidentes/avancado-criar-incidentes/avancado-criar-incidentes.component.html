@@ -1,0 +1,17 @@
+<form [formGroup]="form" [formGroup]="form">
+  <ng-container>
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>Comunicação</mat-label>
+      <input matInput formControlName="comunication" required>
+    </mat-form-field>
+
+    <mat-form-field [floatLabel]="this.floatLabelControl">
+      <mat-label>Ocorrência</mat-label>
+      <input matInput formControlName="ocorrencia" required>
+    </mat-form-field>
+
+    <div>
+      <button mat-raised-button color="primary" (click)="submit()">Salvar</button>
+    </div>
+  </ng-container>
+</form>
