@@ -18,7 +18,7 @@ mat-card{
   display: flex;
   align-items: center;
   background-color: #FFFF;
-  padding: 1px 25px;
+  padding: 17px 40px;
   border-radius: 2%;
 }
 .inicio-quiz {
@@ -39,9 +39,4 @@ mat-card-title {
 }
 .table td {
   padding: 0.9rem 0.5rem;
-}
-
-.quiz-content{
-  width: 60vw;
-  height: 58vh;
 }
